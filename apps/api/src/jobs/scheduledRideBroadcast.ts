@@ -29,7 +29,7 @@ export async function broadcastRideToNearbyDrivers(ride: Record<string, unknown>
   };
 
   for (const driver of drivers) {
-    io.to(`driver:${driver.id}`).emit('trip:new_request', payload);
+    io.to(`driver:${driver.driverId}`).emit('trip:new_request', payload);
     sendPushToUser(driver.userId, {
       title: '¡Viaje programado disponible!',
       body: `${ride.origin_address} → ${ride.destination_address}`,

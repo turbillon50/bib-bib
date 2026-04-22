@@ -33,7 +33,7 @@ export interface LoginDto {
   password: string;
 }
 
-export interface PaymentMethod {
+export interface StoredPaymentMethod {
   id: string;
   stripePaymentMethodId: string;
   brand: string;

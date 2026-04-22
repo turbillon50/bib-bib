@@ -16,6 +16,7 @@
     "@bull-board/api": "^5.19.4",
     "@bull-board/express": "^5.19.4",
     "bcrypt": "^5.1.1",
+    "dotenv": "^16.4.5",
     "bullmq": "^5.7.8",
     "cors": "^2.8.5",
     "express": "^4.19.2",

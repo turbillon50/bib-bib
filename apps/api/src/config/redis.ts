@@ -1,8 +1,8 @@
-import IORedis from 'ioredis';
+import IORedis, { RedisOptions } from 'ioredis';
 import { env } from './env';
 import { logger } from '../utils/logger';
 
-const redisOptions: IORedis.RedisOptions = {
+const redisOptions: RedisOptions = {
   maxRetriesPerRequest: null,
   enableReadyCheck: false,
   lazyConnect: true,
@@ -50,3 +50,5 @@ export const RedisKeys = {
   userSession: (userId: string) => `session:${userId}`,
   rateLimitOtp: (phone: string) => `ratelimit:otp:${phone}`,
 };
+
+export const getRedisClient = () => redis;

@@ -1,19 +1,18 @@
 'use client';
 
-import { useState } from 'react';
+import { Suspense, useState } from 'react';
 import { useRouter, useSearchParams } from 'next/navigation';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion } from 'framer-motion';
 import Link from 'next/link';
-import { MapPin, Eye, EyeOff, Car, User, ArrowRight, ArrowLeft } from 'lucide-react';
+import { MapPin, Eye, EyeOff, Car, User, ArrowRight } from 'lucide-react';
 import { useAuthStore } from '@/store/authStore';
 
 type Role = 'passenger' | 'driver';
 
-export default function RegisterPage() {
+function RegisterForm() {
   const router = useRouter();
   const params = useSearchParams();
   const [role, setRole] = useState<Role>((params.get('role') as Role) || 'passenger');
-  const [step, setStep] = useState(1);
   const [showPwd, setShowPwd] = useState(false);
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
@@ -50,7 +49,6 @@ export default function RegisterPage() {
         initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }}
         className="w-full max-w-md relative"
       >
-        {/* Logo */}
         <Link href="/" className="flex items-center gap-2 justify-center mb-10">
           <div className="w-9 h-9 rounded-xl bg-gradient-to-br from-[#6C63FF] to-[#00D4AA] flex items-center justify-center">
             <MapPin size={16} className="text-white" />
@@ -58,7 +56,6 @@ export default function RegisterPage() {
           <span className="font-black text-2xl text-white">RideMe</span>
         </Link>
 
-        {/* Role Selector */}
         <div className="bg-[#111118] border border-[rgba(255,255,255,0.06)] rounded-3xl p-6 mb-6">
           <p className="text-sm text-[#8B8B9E] mb-4 text-center">Quiero registrarme como:</p>
           <div className="grid grid-cols-2 gap-3">
@@ -80,7 +77,6 @@ export default function RegisterPage() {
           </div>
         </div>
 
-        {/* Form Card */}
         <div className="bg-[#111118] border border-[rgba(255,255,255,0.06)] rounded-3xl p-6">
           <h2 className="text-xl font-bold mb-6 text-center">Crear cuenta</h2>
 
@@ -155,5 +151,13 @@ export default function RegisterPage() {
         </p>
       </motion.div>
     </div>
+  );
+}
+
+export default function RegisterPage() {
+  return (
+    <Suspense fallback={<div className="min-h-screen bg-[#0A0A0F]" />}>
+      <RegisterForm />
+    </Suspense>
   );
 }

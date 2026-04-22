@@ -244,6 +244,22 @@ export async function notifyRideStatusChange(
   }, userId);
 }
 
+export async function sendPushToUser(
+  userId: string,
+  payload: PushNotificationPayload
+): Promise<void> {
+  try {
+    const { rows } = await query<{ fcm_token: string | null }>(
+      'SELECT fcm_token FROM users WHERE id = $1',
+      [userId]
+    );
+    if (rows.length === 0 || !rows[0].fcm_token) return;
+    await sendPushNotification(rows[0].fcm_token, payload, userId);
+  } catch (error) {
+    logger.error('sendPushToUser failed', { userId, error: (error as Error).message });
+  }
+}
+
 async function logNotification(data: {
   userId?: string;
   driverId?: string;

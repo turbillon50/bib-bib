@@ -1,3 +1,4 @@
+import { PoolClient } from 'pg';
 import { query, withTransaction } from '../config/database';
 import { redis } from '../config/redis';
 import { env } from '../config/env';
@@ -95,8 +96,7 @@ export async function createOffer(
 
 async function enrichOffer(
   offer: Offer,
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  client: any
+  client: PoolClient
 ): Promise<Offer> {
   const { rows } = await client.query<{
     name: string;

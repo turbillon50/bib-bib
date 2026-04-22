@@ -166,3 +166,5 @@ export async function isDriverOnline(driverId: string): Promise<boolean> {
   const result = await redis.sismember('drivers:online', driverId);
   return result === 1;
 }
+
+export const getNearbyOnlineDrivers = findNearbyDrivers;

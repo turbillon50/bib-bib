@@ -30,7 +30,8 @@ export async function connectDatabase(): Promise<void> {
   }
 }
 
-export async function query<T = Record<string, unknown>>(
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+export async function query<T = Record<string, any>>(
   text: string,
   params?: unknown[]
 ): Promise<{ rows: T[]; rowCount: number }> {
