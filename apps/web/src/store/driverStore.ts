@@ -1,26 +1,27 @@
 import { create } from 'zustand';
 import { persist, createJSONStorage } from 'zustand/middleware';
-import { Trip, Offer, EarningsSummary, Coordinates } from '@/types';
+import { Offer, EarningsSummary, Coordinates, ActiveRide } from '@/types';
+
+export type SubscriptionStatus = 'active' | 'trialing' | 'past_due' | 'canceled' | 'inactive';
 
 interface DriverStore {
   isOnline: boolean;
   currentLocation: Coordinates | null;
-  activeTrip: Trip | null;
-  incomingOffer: Trip | null; // Pending ride request to accept/reject
-  pendingOffers: Offer[]; // Offers driver submitted, waiting for passenger
-
+  activeTrip: ActiveRide | null;
+  incomingOffer: ActiveRide | null;
+  pendingOffers: Offer[];
+  subscriptionStatus: SubscriptionStatus;
   earnings: EarningsSummary | null;
   todayRides: number;
-
-  // UI state
   showIncomingModal: boolean;
 
   // Actions
   setOnline: (online: boolean) => void;
   setCurrentLocation: (coords: Coordinates | null) => void;
-  setActiveTrip: (trip: Trip | null) => void;
-  setIncomingOffer: (trip: Trip | null) => void;
+  setActiveTrip: (trip: ActiveRide | null) => void;
+  setIncomingOffer: (trip: ActiveRide | null) => void;
   setShowIncomingModal: (show: boolean) => void;
+  setSubscriptionStatus: (status: SubscriptionStatus) => void;
   addPendingOffer: (offer: Offer) => void;
   removePendingOffer: (offerId: string) => void;
   updatePendingOffer: (offerId: string, updates: Partial<Offer>) => void;
@@ -35,6 +36,7 @@ const initialState = {
   activeTrip: null,
   incomingOffer: null,
   pendingOffers: [],
+  subscriptionStatus: 'inactive' as SubscriptionStatus,
   earnings: null,
   todayRides: 0,
   showIncomingModal: false,
@@ -53,6 +55,7 @@ export const useDriverStore = create<DriverStore>()(
         set({ incomingOffer: trip, showIncomingModal: trip !== null }),
 
       setShowIncomingModal: (show) => set({ showIncomingModal: show }),
+      setSubscriptionStatus: (status) => set({ subscriptionStatus: status }),
 
       addPendingOffer: (offer) =>
         set((state) => ({
@@ -82,6 +85,7 @@ export const useDriverStore = create<DriverStore>()(
       storage: createJSONStorage(() => localStorage),
       partialize: (state) => ({
         isOnline: state.isOnline,
+        subscriptionStatus: state.subscriptionStatus,
         todayRides: state.todayRides,
       }),
     },

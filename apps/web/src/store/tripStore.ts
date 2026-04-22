@@ -1,10 +1,9 @@
 import { create } from 'zustand';
-import { Trip, Offer, TripStatus, Place, PaymentMethod, Coordinates } from '@/types';
+import { Offer, PaymentMethod, Place, Coordinates, ActiveRide } from '@/types';
 
 interface TripStore {
-  // Active trip
-  activeTrip: Trip | null;
-  tripStatus: TripStatus | null;
+  // Active ride (API response shape)
+  activeRide: ActiveRide | null;
 
   // Ride request state
   origin: Place | null;
@@ -29,8 +28,7 @@ interface TripStore {
   setDestination: (place: Place | null) => void;
   setProposedPrice: (price: number) => void;
   setPaymentMethod: (method: PaymentMethod) => void;
-  setActiveTrip: (trip: Trip | null) => void;
-  setTripStatus: (status: TripStatus | null) => void;
+  setActiveRide: (ride: ActiveRide | null) => void;
   addOffer: (offer: Offer) => void;
   updateOffer: (offerId: string, updates: Partial<Offer>) => void;
   removeOffer: (offerId: string) => void;
@@ -44,8 +42,7 @@ interface TripStore {
 }
 
 const initialState = {
-  activeTrip: null,
-  tripStatus: null,
+  activeRide: null,
   origin: null,
   destination: null,
   proposedPrice: 10,
@@ -65,8 +62,7 @@ export const useTripStore = create<TripStore>((set) => ({
   setDestination: (place) => set({ destination: place }),
   setProposedPrice: (price) => set({ proposedPrice: price }),
   setPaymentMethod: (method) => set({ paymentMethod: method }),
-  setActiveTrip: (trip) => set({ activeTrip: trip }),
-  setTripStatus: (status) => set({ tripStatus: status }),
+  setActiveRide: (ride) => set({ activeRide: ride }),
 
   addOffer: (offer) =>
     set((state) => {

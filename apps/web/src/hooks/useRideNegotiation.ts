@@ -1,13 +1,13 @@
 'use client';
 
-import { useCallback, useEffect } from 'react';
+import { useCallback } from 'react';
 import { useRouter } from 'next/navigation';
 import { useTripStore } from '@/store/tripStore';
 import { useAuthStore } from '@/store/authStore';
 import { useSocketEvent, useSocketEmit } from '@/hooks/useSocket';
 import { SOCKET_EVENTS } from '@/lib/socket';
 import { api } from '@/lib/api';
-import { Offer, Trip, SocketOffer, SocketTripUpdate, SocketDriverLocation, Place, PaymentMethod } from '@/types';
+import { Offer, SocketOffer, SocketTripUpdate, SocketDriverLocation } from '@/types';
 
 export const useRideNegotiation = () => {
   const router = useRouter();
@@ -20,10 +20,8 @@ export const useRideNegotiation = () => {
     proposedPrice,
     paymentMethod,
     offers,
-    activeTrip,
-    tripStatus,
-    setActiveTrip,
-    setTripStatus,
+    activeRide,
+    setActiveRide,
     addOffer,
     updateOffer,
     removeOffer,
@@ -41,7 +39,6 @@ export const useRideNegotiation = () => {
     event: SOCKET_EVENTS.OFFER_RECEIVED,
     handler: ({ offer }) => {
       addOffer(offer);
-      // Navigate to offers page if not already there
       if (typeof window !== 'undefined' && !window.location.pathname.includes('/offers')) {
         router.push('/app/offers');
       }
@@ -67,28 +64,20 @@ export const useRideNegotiation = () => {
 
   useSocketEvent<SocketTripUpdate>({
     event: SOCKET_EVENTS.TRIP_UPDATED,
-    handler: ({ tripId, status, driver }) => {
-      setTripStatus(status);
-      if (activeTrip && driver) {
-        setActiveTrip({ ...activeTrip, driver, status });
+    handler: ({ status }) => {
+      if (activeRide) {
+        setActiveRide({ ...activeRide, status });
       }
-
       if (status === 'accepted') {
         clearOffers();
         router.push('/app/trip');
       } else if (status === 'completed') {
-        setTimeout(() => {
-          resetTrip();
-          router.push('/app/history');
-        }, 3000);
+        setTimeout(() => { resetTrip(); router.push('/app/history'); }, 3000);
       } else if (status === 'cancelled') {
-        setTimeout(() => {
-          resetTrip();
-          router.push('/app');
-        }, 2000);
+        setTimeout(() => { resetTrip(); router.push('/app'); }, 2000);
       }
     },
-    enabled: !!activeTrip,
+    enabled: !!activeRide,
   });
 
   useSocketEvent<SocketDriverLocation>({
@@ -96,38 +85,28 @@ export const useRideNegotiation = () => {
     handler: ({ location }) => {
       setDriverLocation(location);
     },
-    enabled: !!activeTrip,
+    enabled: !!activeRide,
   });
 
   // ─── Actions ────────────────────────────────────────────────────────────────
 
   const requestRide = useCallback(async () => {
     if (!origin || !destination || !user) return;
-
     setIsRequesting(true);
     try {
-      const trip = await api.post<Trip>('/trips', {
-        originPlaceId: origin.id,
-        originName: origin.name,
+      const res = await api.post('/rides', {
         originAddress: origin.address,
-        originLat: origin.coordinates.lat,
-        originLng: origin.coordinates.lng,
-        destinationPlaceId: destination.id,
-        destinationName: destination.name,
+        originLatitude: origin.coordinates.lat,
+        originLongitude: origin.coordinates.lng,
         destinationAddress: destination.address,
-        destinationLat: destination.coordinates.lat,
-        destinationLng: destination.coordinates.lng,
+        destinationLatitude: destination.coordinates.lat,
+        destinationLongitude: destination.coordinates.lng,
         proposedPrice,
         paymentMethod,
       });
-
-      setActiveTrip(trip);
-      setTripStatus('searching');
+      setActiveRide(res?.data?.ride ?? res);
       clearOffers();
-
-      emit(SOCKET_EVENTS.REQUEST_RIDE, { tripId: trip.id });
       setIsSearching(true);
-
       router.push('/app/offers');
     } catch (error) {
       console.error('Failed to request ride:', error);
@@ -135,43 +114,28 @@ export const useRideNegotiation = () => {
     } finally {
       setIsRequesting(false);
     }
-  }, [
-    origin,
-    destination,
-    user,
-    proposedPrice,
-    paymentMethod,
-    emit,
-    router,
-    setActiveTrip,
-    setTripStatus,
-    clearOffers,
-    setIsRequesting,
-    setIsSearching,
-  ]);
+  }, [origin, destination, user, proposedPrice, paymentMethod, emit, router, setActiveRide, clearOffers, setIsRequesting, setIsSearching]);
 
   const acceptOffer = useCallback(
     async (offer: Offer) => {
-      if (!activeTrip) return;
+      if (!activeRide) return;
       try {
         setSelectedOffer(offer);
-        await api.post(`/trips/${activeTrip.id}/offers/${offer.id}/accept`);
-        emit(SOCKET_EVENTS.ACCEPT_OFFER, { tripId: activeTrip.id, offerId: offer.id });
-        setTripStatus('accepted');
+        await api.post(`/offers/${offer.id}/accept`);
+        emit(SOCKET_EVENTS.ACCEPT_OFFER, { rideId: activeRide.id, offerId: offer.id });
       } catch (error) {
         console.error('Failed to accept offer:', error);
         throw error;
       }
     },
-    [activeTrip, emit, setSelectedOffer, setTripStatus],
+    [activeRide, emit, setSelectedOffer],
   );
 
   const rejectOffer = useCallback(
     async (offerId: string) => {
-      if (!activeTrip) return;
+      if (!activeRide) return;
       try {
-        await api.post(`/trips/${activeTrip.id}/offers/${offerId}/reject`);
-        emit(SOCKET_EVENTS.REJECT_OFFER, { tripId: activeTrip.id, offerId });
+        await api.put(`/offers/${offerId}/reject`);
         updateOffer(offerId, { status: 'rejected' });
         removeOffer(offerId);
       } catch (error) {
@@ -179,60 +143,32 @@ export const useRideNegotiation = () => {
         throw error;
       }
     },
-    [activeTrip, emit, updateOffer, removeOffer],
-  );
-
-  const counterOffer = useCallback(
-    async (offerId: string, counterPrice: number, message?: string) => {
-      if (!activeTrip) return;
-      try {
-        const updated = await api.post<Offer>(
-          `/trips/${activeTrip.id}/offers/${offerId}/counter`,
-          { price: counterPrice, message },
-        );
-        emit(SOCKET_EVENTS.COUNTER_OFFER, {
-          tripId: activeTrip.id,
-          offerId,
-          price: counterPrice,
-          message,
-        });
-        updateOffer(offerId, { ...updated, status: 'countered' });
-      } catch (error) {
-        console.error('Failed to counter offer:', error);
-        throw error;
-      }
-    },
-    [activeTrip, emit, updateOffer],
+    [activeRide, updateOffer, removeOffer],
   );
 
   const cancelRide = useCallback(async () => {
-    if (!activeTrip) return;
+    if (!activeRide) return;
     try {
-      await api.post(`/trips/${activeTrip.id}/cancel`);
-      emit(SOCKET_EVENTS.CANCEL_RIDE, { tripId: activeTrip.id });
+      await api.post(`/rides/${activeRide.id}/cancel`);
+      emit(SOCKET_EVENTS.CANCEL_RIDE, { rideId: activeRide.id });
       resetTrip();
       router.push('/app');
     } catch (error) {
       console.error('Failed to cancel ride:', error);
       throw error;
     }
-  }, [activeTrip, emit, resetTrip, router]);
+  }, [activeRide, emit, resetTrip, router]);
 
   return {
-    // State
     origin,
     destination,
     proposedPrice,
     paymentMethod,
     offers,
-    activeTrip,
-    tripStatus,
-
-    // Actions
+    activeRide,
     requestRide,
     acceptOffer,
     rejectOffer,
-    counterOffer,
     cancelRide,
   };
 };

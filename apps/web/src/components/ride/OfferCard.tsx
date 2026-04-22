@@ -2,21 +2,7 @@
 
 import { motion } from 'framer-motion';
 import { Star, Clock, Check, X } from 'lucide-react';
-
-interface Offer {
-  id: string;
-  offeredPrice: number;
-  offerType: 'accept' | 'counter';
-  driverEtaSeconds?: number;
-  driver?: {
-    firstName: string;
-    lastName: string;
-    avatarUrl?: string;
-    ratingAverage: number;
-    totalTrips: number;
-    vehicle?: { make: string; model: string; color: string; plateNumber: string };
-  };
-}
+import type { Offer } from '@/types';
 
 interface OfferCardProps {
   offer: Offer;

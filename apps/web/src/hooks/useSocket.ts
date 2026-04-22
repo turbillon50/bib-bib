@@ -9,7 +9,7 @@ interface UseSocketOptions {
   autoConnect?: boolean;
 }
 
-export const useSocket = (options: UseSocketOptions = {}): Socket | null => {
+export const useSocket = (options: UseSocketOptions = {}): { socket: Socket | null } => {
   const { autoConnect = true } = options;
   const socketRef = useRef<Socket | null>(null);
   const { tokens, isAuthenticated } = useAuthStore();
@@ -39,15 +39,7 @@ export const useSocket = (options: UseSocketOptions = {}): Socket | null => {
     };
   }, [isAuthenticated, tokens?.accessToken, autoConnect]);
 
-  // Disconnect on unmount of last consumer
-  useEffect(() => {
-    return () => {
-      // We don't auto-disconnect here because socket is a singleton
-      // Disconnect is handled at logout
-    };
-  }, []);
-
-  return socketRef.current;
+  return { socket: socketRef.current };
 };
 
 interface UseSocketEventOptions<T> {

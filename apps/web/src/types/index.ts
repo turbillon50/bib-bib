@@ -134,17 +134,34 @@ export interface Trip {
 }
 
 export type OfferStatus = 'pending' | 'accepted' | 'rejected' | 'expired' | 'countered';
+export type OfferType = 'accept' | 'counter';
+
+export interface OfferDriver {
+  id: string;
+  firstName: string;
+  lastName: string;
+  avatarUrl?: string;
+  ratingAverage: number;
+  totalTrips: number;
+  vehicle?: {
+    make: string;
+    model: string;
+    color: string;
+    plateNumber: string;
+  };
+}
 
 export interface Offer {
   id: string;
   tripId: string;
-  driver: Driver;
-  price: number;
+  offeredPrice: number;
+  offerType: OfferType;
+  driverEtaSeconds?: number;
   message?: string;
-  estimatedArrival: number; // minutes
   status: OfferStatus;
   expiresAt: string;
   createdAt: string;
+  driver?: OfferDriver;
 }
 
 export interface CounterOffer {
@@ -276,6 +293,26 @@ export interface ApiError {
   message: string;
   statusCode: number;
   errors?: Record<string, string[]>;
+}
+
+// ─── Active Ride (API response shape, snake_case) ─────────────────────────────
+
+export interface ActiveRide {
+  id: string;
+  status: string;
+  origin_address: string;
+  destination_address: string;
+  proposed_price: number;
+  final_price: number | null;
+  offer_expiry_at?: string;
+  payment_method: PaymentMethod;
+  driver_name?: string;
+  driver_rating?: string | number;
+  vehicle_make?: string;
+  vehicle_model?: string;
+  plate_number?: string;
+  passenger_name?: string;
+  [key: string]: unknown;
 }
 
 // ─── UI Helpers ───────────────────────────────────────────────────────────────
