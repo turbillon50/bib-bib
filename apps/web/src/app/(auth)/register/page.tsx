@@ -31,7 +31,7 @@ export default function RegisterPage() {
     setError('');
     setLoading(true);
     try {
-      await register({ ...form, role });
+      await register({ name: `${form.firstName} ${form.lastName}`.trim(), phone: form.phone, email: form.email, password: form.password, role });
       router.push(role === 'driver' ? '/driver' : '/app');
     } catch (err: unknown) {
       setError(err instanceof Error ? err.message : 'Error al crear cuenta');

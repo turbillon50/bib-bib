@@ -123,25 +123,19 @@ apiClient.interceptors.response.use(
 
 // ─── Typed API Helpers ────────────────────────────────────────────────────────
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
 export const api = {
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   get: <T = any>(url: string, config?: AxiosRequestConfig) =>
     apiClient.get<T>(url, config).then((r) => r.data),
 
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   post: <T = any>(url: string, data?: unknown, config?: AxiosRequestConfig) =>
     apiClient.post<T>(url, data, config).then((r) => r.data),
 
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   put: <T = any>(url: string, data?: unknown, config?: AxiosRequestConfig) =>
     apiClient.put<T>(url, data, config).then((r) => r.data),
 
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   patch: <T = any>(url: string, data?: unknown, config?: AxiosRequestConfig) =>
     apiClient.patch<T>(url, data, config).then((r) => r.data),
 
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   delete: <T = any>(url: string, config?: AxiosRequestConfig) =>
     apiClient.delete<T>(url, config).then((r) => r.data),
 };

@@ -114,7 +114,8 @@ export const useRideNegotiation = () => {
     } finally {
       setIsRequesting(false);
     }
-  }, [origin, destination, user, proposedPrice, paymentMethod, emit, router, setActiveRide, clearOffers, setIsRequesting, setIsSearching]);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [origin, destination, user, proposedPrice, paymentMethod, router, setActiveRide, clearOffers, setIsRequesting, setIsSearching]);
 
   const acceptOffer = useCallback(
     async (offer: Offer) => {

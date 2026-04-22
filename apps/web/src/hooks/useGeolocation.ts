@@ -19,8 +19,15 @@ interface UseGeolocationOptions {
   onUpdate?: (coords: Coordinates) => void;
 }
 
+interface LocationCoords {
+  latitude: number;
+  longitude: number;
+}
+
 export const useGeolocation = (options: UseGeolocationOptions = {}): GeolocationState & {
+  location: LocationCoords | null;
   requestPermission: () => void;
+  requestLocation: () => void;
   stopWatching: () => void;
 } => {
   const {
@@ -141,5 +148,9 @@ export const useGeolocation = (options: UseGeolocationOptions = {}): Geolocation
     return () => stopWatching();
   }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
-  return { ...state, requestPermission, stopWatching };
+  const location: LocationCoords | null = state.coords
+    ? { latitude: state.coords.lat, longitude: state.coords.lng }
+    : null;
+
+  return { ...state, location, requestPermission, requestLocation: requestPermission, stopWatching };
 };
