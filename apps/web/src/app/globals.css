@@ -390,6 +390,61 @@ input[type='range']::-moz-range-thumb {
   transition: opacity 300ms, transform 300ms;
 }
 
+/* ─── v0 Gradient Border ─────────────────────────────────────────────────────── */
+.gradient-border {
+  position: relative;
+  background: #111118;
+}
+
+.gradient-border::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  padding: 2px;
+  background: linear-gradient(135deg, #6C63FF 0%, #00D4AA 100%);
+  -webkit-mask:
+    linear-gradient(#fff 0 0) content-box,
+    linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  pointer-events: none;
+}
+
+/* ─── v0 Gradient Button ──────────────────────────────────────────────────────── */
+.gradient-bg {
+  background: linear-gradient(135deg, #6C63FF 0%, #00D4AA 100%);
+}
+
+/* ─── v0 CTA Glow ─────────────────────────────────────────────────────────────── */
+.cta-glow {
+  position: relative;
+}
+
+.cta-glow::before {
+  content: '';
+  position: absolute;
+  inset: -8px;
+  background: radial-gradient(ellipse at center, rgba(108, 99, 255, 0.4) 0%, transparent 70%);
+  border-radius: 20px;
+  z-index: -1;
+  filter: blur(12px);
+}
+
+/* ─── v0 Pulse Glow CTA ───────────────────────────────────────────────────────── */
+@keyframes pulse-glow-cta {
+  0%, 100% {
+    box-shadow: 0 0 20px rgba(108, 99, 255, 0.5), 0 0 40px rgba(108, 99, 255, 0.3);
+  }
+  50% {
+    box-shadow: 0 0 35px rgba(108, 99, 255, 0.7), 0 0 60px rgba(108, 99, 255, 0.4);
+  }
+}
+
+.pulse-glow {
+  animation: pulse-glow-cta 2s ease-in-out infinite;
+}
+
 /* ─── Loading Dots ───────────────────────────────────────────────────────────── */
 @keyframes loadingDot {
   0%, 80%, 100% { transform: scale(0.6); opacity: 0.4; }
