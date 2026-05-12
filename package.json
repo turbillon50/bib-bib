@@ -17,5 +17,8 @@
   "packageManager": "npm@10.9.7",
   "engines": {
     "node": ">=20.0.0"
+  },
+  "overrides": {
+    "@clerk/nextjs": "5.7.6"
   }
 }
