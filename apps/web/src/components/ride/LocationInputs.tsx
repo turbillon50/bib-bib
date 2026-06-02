@@ -21,9 +21,16 @@ export function LocationInputs({
   return (
     <div className="relative flex flex-col gap-3">
       {/* Pickup input */}
-      <div className="flex items-center gap-3 rounded-xl bg-muted px-4 py-3">
-        <div className="h-3 w-3 rounded-full bg-primary shadow-[0_0_10px_rgba(108,99,255,0.6)]" />
+      <div className="flex items-center gap-3 rounded-xl bg-muted px-4 py-3 transition-shadow focus-within:ring-1 focus-within:ring-primary/50">
+        <div
+          className="h-3 w-3 rounded-full bg-primary shadow-[0_0_10px_rgba(108,99,255,0.6)]"
+          aria-hidden="true"
+        />
+        <label htmlFor="pickup-input" className="sr-only">
+          Punto de recogida
+        </label>
         <input
+          id="pickup-input"
           type="text"
           placeholder="¿Dónde te recogemos?"
           value={pickup}
@@ -44,9 +51,16 @@ export function LocationInputs({
       </motion.button>
 
       {/* Destination input */}
-      <div className="flex items-center gap-3 rounded-xl bg-muted px-4 py-3">
-        <div className="h-3 w-3 rounded-full bg-secondary shadow-[0_0_10px_rgba(0,212,170,0.6)]" />
+      <div className="flex items-center gap-3 rounded-xl bg-muted px-4 py-3 transition-shadow focus-within:ring-1 focus-within:ring-primary/50">
+        <div
+          className="h-3 w-3 rounded-full bg-secondary shadow-[0_0_10px_rgba(0,212,170,0.6)]"
+          aria-hidden="true"
+        />
+        <label htmlFor="destination-input" className="sr-only">
+          Destino
+        </label>
         <input
+          id="destination-input"
           type="text"
           placeholder="¿A dónde vas?"
           value={destination}
@@ -56,7 +70,10 @@ export function LocationInputs({
       </div>
 
       {/* Vertical line connecting dots */}
-      <div className="absolute left-[1.625rem] top-[2.25rem] h-[calc(100%-3rem)] w-px bg-gradient-to-b from-primary to-secondary" />
+      <div
+        className="absolute left-[1.625rem] top-[2.25rem] h-[calc(100%-3rem)] w-px bg-gradient-to-b from-primary to-secondary"
+        aria-hidden="true"
+      />
     </div>
   )
 }
