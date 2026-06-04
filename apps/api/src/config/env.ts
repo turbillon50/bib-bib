@@ -30,6 +30,11 @@ const envSchema = z.object({
   // Clerk
   CLERK_SECRET_KEY: z.string().min(1),
 
+  // Firebase Admin (optional - push notifications disabled if missing)
+  FIREBASE_PROJECT_ID: z.string().optional(),
+  FIREBASE_CLIENT_EMAIL: z.string().optional(),
+  FIREBASE_PRIVATE_KEY: z.string().optional(),
+
   // Resend
   RESEND_API_KEY: z.string().min(1),
   RESEND_FROM_EMAIL: z.string().email(),

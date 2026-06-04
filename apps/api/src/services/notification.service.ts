@@ -294,3 +294,144 @@ async function logNotification(data: {
     });
   }
 }
+
+// ============================================================
+// SMS (OTP)
+// ============================================================
+
+/**
+ * Send an OTP code via SMS.
+ * Uses Twilio if TWILIO_* env vars are present; otherwise falls back to
+ * logging the code (useful in development) and recording the attempt.
+ */
+export async function sendOtpSms(phone: string, code: string): Promise<void> {
+  const message = `Tu código de verificación RideMe es: ${code}. Expira en 5 minutos.`;
+
+  const twilioSid = process.env.TWILIO_ACCOUNT_SID;
+  const twilioToken = process.env.TWILIO_AUTH_TOKEN;
+  const twilioFrom = process.env.TWILIO_FROM_NUMBER;
+
+  try {
+    if (twilioSid && twilioToken && twilioFrom) {
+      const auth = Buffer.from(`${twilioSid}:${twilioToken}`).toString('base64');
+      const body = new URLSearchParams({
+        To: phone,
+        From: twilioFrom,
+        Body: message,
+      });
+
+      const response: { ok: boolean; status: number; text(): Promise<string> } = await fetch(
+        `https://api.twilio.com/2010-04-01/Accounts/${twilioSid}/Messages.json`,
+        {
+          method: 'POST',
+          headers: {
+            Authorization: `Basic ${auth}`,
+            'Content-Type': 'application/x-www-form-urlencoded',
+          },
+          body: body.toString(),
+        }
+      );
+
+      if (!response.ok) {
+        const errText = await response.text();
+        throw new Error(`Twilio SMS failed (${response.status}): ${errText}`);
+      }
+
+      logger.info('OTP SMS sent via Twilio', { phone });
+    } else {
+      // No SMS provider configured - log for development/testing
+      logger.warn('No SMS provider configured (TWILIO_* missing). OTP logged instead.', {
+        phone,
+        code,
+      });
+    }
+
+    await logNotification({
+      channel: 'sms',
+      type: 'otp',
+      payload: { phone },
+      status: 'sent',
+    });
+  } catch (error) {
+    const err = error as Error;
+    logger.error('OTP SMS send failed', { error: err.message, phone });
+    await logNotification({
+      channel: 'sms',
+      type: 'otp',
+      payload: { phone },
+      status: 'failed',
+      error: err.message,
+    });
+    // Do not throw: OTP is stored server-side; SMS delivery failure should
+    // not crash the request flow. Client can retry.
+  }
+}
+
+// ============================================================
+// PUSH NOTIFICATIONS (FCM)
+// ============================================================
+
+/**
+ * Send a push notification to a user via Firebase Cloud Messaging.
+ * Looks up the user's fcm_token; silently no-ops when Firebase is not
+ * configured or the user has no registered device token.
+ */
+export async function sendPushToUser(
+  userId: string,
+  notification: PushNotificationData
+): Promise<void> {
+  try {
+    if (!userId) return;
+
+    const { getMessaging, isFirebaseConfigured } = await import('../config/firebase');
+
+    if (!isFirebaseConfigured()) {
+      logger.debug('Push skipped: Firebase not configured', { userId });
+      return;
+    }
+
+    const { rows } = await query<{ fcm_token: string | null }>(
+      'SELECT fcm_token FROM users WHERE id = $1',
+      [userId]
+    );
+
+    const fcmToken = rows[0]?.fcm_token;
+    if (!fcmToken) {
+      logger.debug('Push skipped: user has no FCM token', { userId });
+      return;
+    }
+
+    const messaging = getMessaging();
+    if (!messaging) return;
+
+    const messageId = await messaging.send({
+      token: fcmToken,
+      notification: {
+        title: notification.title,
+        body: notification.body,
+      },
+      data: notification.data ?? {},
+    });
+
+    await logNotification({
+      userId,
+      channel: 'push',
+      type: 'push',
+      payload: notification,
+      status: 'sent',
+    });
+    logger.debug('Push notification sent', { userId, messageId });
+  } catch (error) {
+    const err = error as Error;
+    logger.error('Push notification failed', { userId, error: err.message });
+    await logNotification({
+      userId,
+      channel: 'push',
+      type: 'push',
+      payload: notification,
+      status: 'failed',
+      error: err.message,
+    });
+    // Swallow errors: push failures must never break business flows.
+  }
+}

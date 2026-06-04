@@ -8,8 +8,9 @@ import { logger } from '../utils/logger';
 
 export interface AuthUser {
   id: string;
-  email: string;
-  clerkId: string;
+  email?: string;
+  phone?: string;
+  clerkId?: string;
   role: 'passenger' | 'driver' | 'admin';
   driverId?: string;
 }
