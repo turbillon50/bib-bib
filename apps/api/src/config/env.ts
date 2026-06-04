@@ -27,15 +27,17 @@ const envSchema = z.object({
   STRIPE_MONTHLY_PRICE_ID: z.string().min(1),
   STRIPE_PER_TRIP_AMOUNT: z.coerce.number().default(150),
 
-  // Firebase
-  FIREBASE_PROJECT_ID: z.string().min(1),
-  FIREBASE_PRIVATE_KEY: z.string().min(1),
-  FIREBASE_CLIENT_EMAIL: z.string().email(),
+  // Clerk
+  CLERK_SECRET_KEY: z.string().min(1),
 
-  // Twilio
-  TWILIO_ACCOUNT_SID: z.string().min(1),
-  TWILIO_AUTH_TOKEN: z.string().min(1),
-  TWILIO_PHONE_NUMBER: z.string().min(1),
+  // Firebase Admin (optional - push notifications disabled if missing)
+  FIREBASE_PROJECT_ID: z.string().optional(),
+  FIREBASE_CLIENT_EMAIL: z.string().optional(),
+  FIREBASE_PRIVATE_KEY: z.string().optional(),
+
+  // Resend
+  RESEND_API_KEY: z.string().min(1),
+  RESEND_FROM_EMAIL: z.string().email(),
 
   // AWS S3
   AWS_REGION: z.string().default('us-east-1'),

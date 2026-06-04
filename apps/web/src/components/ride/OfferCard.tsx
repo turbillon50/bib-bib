@@ -81,6 +81,7 @@ export function OfferCard({ offer, index, onAccept, onReject, loading }: OfferCa
             onClick={() => onReject(offer.id)}
             disabled={loading}
             className="p-2.5 rounded-xl border border-[rgba(255,71,87,0.3)] text-[#FF4757] hover:bg-[rgba(255,71,87,0.1)] transition-colors disabled:opacity-50"
+            aria-label="Rechazar oferta"
           >
             <X size={16} />
           </button>
