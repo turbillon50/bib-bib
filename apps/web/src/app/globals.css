@@ -42,6 +42,11 @@ html {
   -webkit-text-size-adjust: 100%;
 }
 
+html,
+body {
+  overscroll-behavior-y: none;
+}
+
 body {
   background-color: var(--bg);
   color: var(--text-primary);
@@ -308,6 +313,14 @@ h1, h2, h3, h4, h5, h6 {
 
 .pt-safe {
   padding-top: max(env(safe-area-inset-top), 16px);
+}
+
+.safe-bottom {
+  padding-bottom: env(safe-area-inset-bottom, 0px);
+}
+
+.safe-top {
+  padding-top: env(safe-area-inset-top, 0px);
 }
 
 /* ─── Float Animation ────────────────────────────────────────────────────────── */

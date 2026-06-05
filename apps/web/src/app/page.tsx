@@ -102,7 +102,7 @@ export default function LandingPage() {
   return (
     <div className="min-h-screen bg-[#0A0A0F] text-white overflow-x-hidden">
       {/* ─── Navbar ─── */}
-      <nav className="fixed top-0 left-0 right-0 z-50 glass border-b border-white/[0.06]">
+      <nav className="safe-top fixed top-0 left-0 right-0 z-50 glass border-b border-white/[0.06]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
           <div className="flex items-center gap-2">
             <div className="w-8 h-8 rounded-xl bg-gradient-to-br from-[#6C63FF] to-[#00D4AA] flex items-center justify-center">
