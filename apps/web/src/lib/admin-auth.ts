@@ -6,7 +6,7 @@ import { getDb } from './db';
  * Admin guard for API routes and server components.
  * A user is admin if:
  *  - their email is in ADMIN_EMAILS (comma-separated env var), or
- *  - their users.role = 'admin' in the database (matched by clerk_id or email)
+ *  - their users.role = 'admin' or 'owner' in the database (matched by clerk_id or email)
  */
 export async function isAdmin(): Promise<boolean> {
   const { userId } = auth();
@@ -27,7 +27,7 @@ export async function isAdmin(): Promise<boolean> {
       `SELECT role FROM users WHERE clerk_id = $1 OR LOWER(email) = $2 LIMIT 1`,
       [userId, email]
     )) as Array<{ role: string }>;
-    return rows[0]?.role === 'admin';
+    return rows[0]?.role === 'admin' || rows[0]?.role === 'owner';
   } catch {
     return false;
   }

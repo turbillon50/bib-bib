@@ -1,7 +1,7 @@
 import { redirect } from 'next/navigation';
 import Link from 'next/link';
 import { isAdmin } from '@/lib/admin-auth';
-import { LayoutDashboard, Car, Users, Route } from 'lucide-react';
+import { LayoutDashboard, Car, Users, Route, Mail } from 'lucide-react';
 
 export const dynamic = 'force-dynamic';
 
@@ -10,6 +10,7 @@ const nav = [
   { href: '/admin/rides', label: 'Viajes', icon: Route },
   { href: '/admin/drivers', label: 'Choferes', icon: Car },
   { href: '/admin/users', label: 'Usuarios', icon: Users },
+  { href: '/admin/invitations', label: 'Invitaciones', icon: Mail },
 ];
 
 export default async function AdminLayout({ children }: { children: React.ReactNode }) {
