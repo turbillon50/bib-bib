@@ -1,6 +1,11 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { getDb } from '@/lib/db';
 import { isAdmin } from '@/lib/admin-auth';
+import { currentUser } from '@clerk/nextjs/server';
+
+// Owner de arranque: puede inicializar la DB aunque su rol aún no exista en la tabla.
+const BOOTSTRAP_OWNERS = (process.env.ADMIN_EMAILS || 'turbillon50@gmail.com')
+  .split(',').map((e) => e.trim().toLowerCase()).filter(Boolean);
 
 export const dynamic = 'force-dynamic';
 
@@ -11,7 +16,15 @@ export async function POST(req: NextRequest) {
   const secret = process.env.MIGRATION_SECRET;
   const provided = req.headers.get('x-migration-secret');
   const bySecret = !!secret && provided === secret;
-  if (!bySecret && !(await isAdmin())) {
+
+  let byBootstrap = false;
+  try {
+    const cu = await currentUser();
+    const email = (cu?.emailAddresses?.[0]?.emailAddress ?? '').toLowerCase();
+    byBootstrap = !!email && BOOTSTRAP_OWNERS.includes(email);
+  } catch { /* ignore */ }
+
+  if (!bySecret && !byBootstrap && !(await isAdmin())) {
     return NextResponse.json({ error: 'No autorizado' }, { status: 403 });
   }
 
@@ -48,8 +61,10 @@ export async function POST(req: NextRequest) {
   await run('idx invited_by', `CREATE INDEX IF NOT EXISTS idx_invitations_invited_by ON invitations(invited_by)`);
 
   // Promover ADMIN_EMAILS a owner (si ya existen en la tabla)
-  const owners = (process.env.ADMIN_EMAILS || '')
-    .split(',').map((e) => e.trim().toLowerCase()).filter(Boolean);
+  const owners = Array.from(new Set([
+    ...(process.env.ADMIN_EMAILS || '').split(',').map((e) => e.trim().toLowerCase()).filter(Boolean),
+    ...BOOTSTRAP_OWNERS,
+  ]));
   let promoted = 0;
   for (const em of owners) {
     try {

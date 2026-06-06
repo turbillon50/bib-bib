@@ -16,17 +16,38 @@ export default function AdminInvitations() {
   const [msg, setMsg] = useState<string | null>(null);
   const [error, setError] = useState<string | null>(null);
   const [copied, setCopied] = useState<string | null>(null);
+  const [needsInit, setNeedsInit] = useState(false);
+  const [initing, setIniting] = useState(false);
 
   const load = useCallback(() => {
     fetch('/api/invitations')
       .then(async (r) => { const j = await r.json(); if (!r.ok) throw new Error(j.error); 
         setRows(j.invitations); setAllowed(j.allowedRoles); setMe(j.me);
         if (!role && j.allowedRoles[0]) setRole(j.allowedRoles[0].value); setError(null); })
-      .catch((e) => setError(e.message));
+      .catch((e) => {
+        setError(e.message);
+        if (/inicializ|no existe|invitations|relation|42P01|tabla/i.test(e.message || '')) setNeedsInit(true);
+      });
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  useEffect(() => { load(); }, [load]);
+  const initDb = async () => {
+    setIniting(true); setError(null);
+    try {
+      const r = await fetch('/api/admin/db-init', { method: 'POST' });
+      const j = await r.json();
+      if (!r.ok) throw new Error(j.error || 'No autorizado');
+      setNeedsInit(false);
+      setMsg('Base de datos inicializada. Ya puedes invitar.');
+      load();
+    } catch (e: any) { setError(e.message); }
+    finally { setIniting(false); }
+  };
+
+  useEffect(() => {
+    fetch('/api/health').then((r) => r.json()).then((h) => { if (h && h.invitations === false) setNeedsInit(true); }).catch(() => {});
+    load();
+  }, [load]);
 
   const create = async () => {
     if (creating || !role) return;
@@ -68,6 +89,16 @@ export default function AdminInvitations() {
           Cada quien invita su nivel o más abajo, nunca hacia arriba.
         </p>
       </div>
+
+      {needsInit && (
+        <div className="rounded-xl border border-amber-500/40 bg-amber-500/10 p-4">
+          <p className="text-sm text-amber-300">La tabla de invitaciones aún no está inicializada.</p>
+          <button onClick={initDb} disabled={initing}
+            className="mt-3 rounded-lg bg-amber-500 px-4 py-2 text-sm font-semibold text-black hover:bg-amber-400 disabled:opacity-50">
+            {initing ? 'Inicializando…' : 'Inicializar invitaciones'}
+          </button>
+        </div>
+      )}
 
       <div className="rounded-xl border border-primary/30 bg-surface p-5">
         <h2 className="mb-3 text-sm font-semibold text-primary">Generar invitación</h2>
