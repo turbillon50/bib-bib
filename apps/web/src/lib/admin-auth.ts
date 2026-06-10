@@ -3,6 +3,7 @@ import { NextResponse } from 'next/server';
 import { cookies } from 'next/headers';
 import { getDb } from './db';
 
+const CLERK_ON = /^pk_(test|live)_/.test(process.env.NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY||'') && !/placeholder|REPLACE|xxx/i.test(process.env.NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY||'');
 export function isDemoMode(): boolean {
   return cookies().get('rideme_demo')?.value === '1';
 }
@@ -15,6 +16,7 @@ export function isDemoMode(): boolean {
  */
 export async function isAdmin(): Promise<boolean> {
   if (isDemoMode()) return true;
+  if (!CLERK_ON) return false;
 
   const { userId } = auth();
   if (!userId) return false;
@@ -43,6 +45,7 @@ export async function isAdmin(): Promise<boolean> {
 /** Returns a 401/403 NextResponse if not admin, otherwise null. */
 export async function requireAdmin(): Promise<NextResponse | null> {
   if (isDemoMode()) return null;
+  if (!CLERK_ON) return NextResponse.json({ error: 'No autenticado' }, { status: 401 });
 
   const { userId } = auth();
   if (!userId) {
