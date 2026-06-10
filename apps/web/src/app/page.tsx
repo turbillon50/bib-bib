@@ -14,6 +14,8 @@ import {
   Clock,
   ArrowRight,
 } from '@/components/icons';
+import { SupportButton } from '@/components/SupportButton';
+import { ThemeToggle } from '@/components/ThemeToggle';
 
 const FEATURES = [
   {
@@ -100,9 +102,9 @@ export default function LandingPage() {
   const heroY = useTransform(scrollYProgress, [0, 1], [0, -80]);
 
   return (
-    <div className="min-h-screen bg-[#0A0A0F] text-white overflow-x-hidden">
+    <div className="min-h-screen overflow-x-hidden bg-background text-foreground">
       {/* ─── Navbar ─── */}
-      <nav className="safe-top fixed top-0 left-0 right-0 z-50 glass border-b border-white/[0.06]">
+      <nav className="safe-top sticky top-0 z-50 border-b border-white/[0.06] bg-surface/85 backdrop-blur-xl">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
           <div className="flex items-center gap-2">
             <div className="w-8 h-8 rounded-xl bg-gradient-to-br from-[#6C63FF] to-[#00D4AA] flex items-center justify-center">
@@ -116,9 +118,10 @@ export default function LandingPage() {
             <a href="#drivers" className="hover:text-white transition-colors">For Drivers</a>
           </div>
           <div className="flex items-center gap-3">
+            <ThemeToggle className="hidden sm:inline-flex" />
             <Link
               href="/login"
-              className="text-sm text-white/70 hover:text-white transition-colors px-4 py-2"
+              className="hidden px-4 py-2 text-sm text-muted-foreground transition-colors hover:text-foreground sm:inline-flex"
             >
               Sign In
             </Link>
@@ -133,25 +136,17 @@ export default function LandingPage() {
       </nav>
 
       {/* ─── Hero ─── */}
-      <section ref={heroRef} className="relative min-h-screen flex items-center justify-center overflow-hidden">
-        {/* Background gradients */}
-        <div className="absolute inset-0 pointer-events-none">
-          <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-[800px] h-[800px] rounded-full bg-[#6C63FF]/10 blur-[120px]" />
-          <div className="absolute bottom-0 right-1/4 w-[400px] h-[400px] rounded-full bg-[#00D4AA]/10 blur-[80px]" />
-        </div>
-
-        {/* Grid overlay */}
-        <div
-          className="absolute inset-0 opacity-[0.03]"
-          style={{
-            backgroundImage: 'linear-gradient(rgba(255,255,255,0.5) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.5) 1px, transparent 1px)',
-            backgroundSize: '60px 60px',
-          }}
+      <section ref={heroRef} className="relative flex min-h-[92svh] items-center justify-center overflow-hidden">
+        <img
+          src="/brand/hero.jpg"
+          alt=""
+          className="absolute inset-0 h-full w-full object-cover"
         />
+        <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(10,10,15,0.88),rgba(10,10,15,0.52),rgba(10,10,15,0.72))]" />
 
         <motion.div
           style={{ opacity: heroOpacity, y: heroY }}
-          className="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 text-center pt-24 pb-20"
+          className="relative z-10 mx-auto max-w-5xl px-4 pb-20 pt-20 text-center sm:px-6"
         >
           {/* Badge */}
           <motion.div
@@ -161,7 +156,7 @@ export default function LandingPage() {
             className="inline-flex items-center gap-2 bg-[#6C63FF]/10 border border-[#6C63FF]/30 rounded-full px-4 py-1.5 text-sm text-[#6C63FF] font-medium mb-8"
           >
             <span className="w-2 h-2 rounded-full bg-[#6C63FF] animate-pulse" />
-            Now live in 50+ cities
+            Name your price ride-hailing
           </motion.div>
 
           {/* Headline */}
@@ -169,13 +164,9 @@ export default function LandingPage() {
             initial={{ opacity: 0, y: 40 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, delay: 0.1 }}
-            className="text-5xl sm:text-7xl lg:text-8xl font-black leading-[0.95] tracking-tight mb-6"
+            className="mb-6 text-5xl font-black leading-[0.95] tracking-tight text-white sm:text-7xl lg:text-8xl"
           >
-            You Set the{' '}
-            <span className="gradient-text">Price.</span>
-            <br />
-            We Handle the{' '}
-            <span className="gradient-text">Rest.</span>
+            RideMe
           </motion.h1>
 
           {/* Subheadline */}
@@ -183,7 +174,7 @@ export default function LandingPage() {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, delay: 0.2 }}
-            className="text-xl sm:text-2xl text-white/50 max-w-2xl mx-auto mb-10 leading-relaxed"
+            className="mx-auto mb-10 max-w-2xl text-xl leading-relaxed text-white/70 sm:text-2xl"
           >
             Propose your own fare. Drivers compete for your ride. No surge. No surprises. Just the ride you want, at the price you choose.
           </motion.p>
@@ -202,10 +193,30 @@ export default function LandingPage() {
               Book a Ride <ArrowRight size={20} />
             </Link>
             <Link
+              href="/demo?to=/app"
+              className="flex w-full items-center justify-center gap-2 rounded-2xl border border-white/20 px-8 py-4 text-lg font-semibold text-white transition-all hover:border-white/40 hover:bg-white/10 sm:w-auto"
+            >
+              Ver demo
+            </Link>
+            <Link
               href="/register?role=driver"
-              className="flex items-center gap-2 px-8 py-4 rounded-2xl text-lg font-semibold border border-white/10 hover:border-white/20 hover:bg-white/5 transition-all w-full sm:w-auto justify-center"
+              className="flex items-center gap-2 px-8 py-4 rounded-2xl text-lg font-semibold border border-white/10 hover:border-white/20 hover:bg-white/5 transition-all w-full sm:w-auto justify-center text-white"
             >
               <Car size={20} /> Become a Driver
+            </Link>
+          </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0, y: 12 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.45 }}
+            className="mt-4 flex flex-wrap items-center justify-center gap-3 text-sm"
+          >
+            <Link href="/demo?to=/driver" className="rounded-full border border-white/15 px-4 py-2 text-white/75 transition hover:bg-white/10 hover:text-white">
+              Demo conductor
+            </Link>
+            <Link href="/demo?to=/admin" className="rounded-full border border-white/15 px-4 py-2 text-white/75 transition hover:bg-white/10 hover:text-white">
+              Demo admin
             </Link>
           </motion.div>
 
@@ -216,7 +227,7 @@ export default function LandingPage() {
             transition={{ duration: 0.8, delay: 0.5 }}
             className="mt-16 max-w-sm mx-auto"
           >
-            <div className="card glass p-5 text-left rounded-3xl">
+            <div className="card glass p-5 text-left rounded-3xl text-white">
               <div className="flex items-center gap-3 mb-4">
                 <div className="w-10 h-10 rounded-full bg-gradient-to-br from-[#6C63FF] to-[#00D4AA] flex items-center justify-center text-sm font-bold">
                   JD
@@ -252,7 +263,7 @@ export default function LandingPage() {
       </section>
 
       {/* ─── Stats ─── */}
-      <section className="py-16 border-y border-white/[0.06] bg-[#111118]">
+      <section className="border-y border-white/[0.06] bg-surface py-16">
         <div className="max-w-5xl mx-auto px-4 grid grid-cols-2 md:grid-cols-4 gap-8">
           {STATS.map((stat, i) => (
             <motion.div
@@ -264,7 +275,7 @@ export default function LandingPage() {
               className="text-center"
             >
               <div className="text-4xl sm:text-5xl font-black gradient-text font-mono">{stat.value}</div>
-              <div className="text-white/50 text-sm mt-1">{stat.label}</div>
+              <div className="text-muted-foreground text-sm mt-1">{stat.label}</div>
             </motion.div>
           ))}
         </div>
@@ -376,6 +387,48 @@ export default function LandingPage() {
         </div>
       </section>
 
+      {/* ─── App & Driver Preview ─── */}
+      <section id="drivers" className="bg-background py-24">
+        <div className="mx-auto grid max-w-7xl gap-10 px-4 sm:px-6 lg:grid-cols-2">
+          <motion.div
+            initial={{ opacity: 0, y: 24 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="overflow-hidden rounded-3xl border border-white/10 bg-surface"
+          >
+            <img src="/brand/app.jpg" alt="RideMe passenger app" className="h-72 w-full object-cover sm:h-96" />
+            <div className="p-6">
+              <h2 className="text-2xl font-black">Passenger control, premium flow</h2>
+              <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
+                Set pickup, destination, payment method and your price from a focused ride request surface.
+              </p>
+              <Link href="/demo?to=/app" className="mt-5 inline-flex items-center gap-2 text-sm font-semibold text-primary">
+                Ver demo usuario <ArrowRight size={16} />
+              </Link>
+            </div>
+          </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0, y: 24 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.1 }}
+            className="overflow-hidden rounded-3xl border border-white/10 bg-surface"
+          >
+            <img src="/brand/driver.jpg" alt="RideMe driver experience" className="h-72 w-full object-cover sm:h-96" />
+            <div className="p-6">
+              <h2 className="text-2xl font-black">Drivers choose the work that pays</h2>
+              <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
+                Drivers stay in control with live requests, counter-offers, subscription status and earnings.
+              </p>
+              <Link href="/demo?to=/driver" className="mt-5 inline-flex items-center gap-2 text-sm font-semibold text-secondary">
+                Demo conductor <ArrowRight size={16} />
+              </Link>
+            </div>
+          </motion.div>
+        </div>
+      </section>
+
       {/* ─── Testimonials ─── */}
       <section className="py-24 max-w-7xl mx-auto px-4 sm:px-6">
         <motion.div
@@ -456,10 +509,10 @@ export default function LandingPage() {
                   Get Started Free <ArrowRight size={20} />
                 </Link>
                 <Link
-                  href="/login"
+                  href="/demo?to=/admin"
                   className="flex items-center gap-2 px-8 py-4 rounded-2xl text-lg font-semibold border border-white/20 hover:bg-white/5 transition-all justify-center"
                 >
-                  Sign In
+                  Demo admin
                 </Link>
               </div>
             </div>
@@ -486,6 +539,8 @@ export default function LandingPage() {
           </div>
         </div>
       </footer>
+      <ThemeToggle className="fixed bottom-24 left-4 z-[70] sm:hidden" />
+      <SupportButton />
     </div>
   );
 }

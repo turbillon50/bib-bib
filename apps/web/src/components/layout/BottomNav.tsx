@@ -34,33 +34,70 @@ export function BottomNav({ role = 'passenger' }: BottomNavProps) {
   const items = role === 'driver' ? driverNav : passengerNav;
 
   return (
-    <div className="fixed bottom-0 left-0 right-0 z-40 safe-bottom">
-      <div className="bg-[rgba(17,17,24,0.95)] backdrop-blur-xl border-t border-[rgba(255,255,255,0.06)] px-2 pb-1 pt-2">
-        <div className="flex items-center justify-around max-w-md mx-auto">
+    <>
+      <div className="fixed bottom-0 left-0 right-0 z-40 safe-bottom md:hidden">
+        <div className="border-t border-[rgba(255,255,255,0.06)] bg-surface/95 px-2 pb-1 pt-2 backdrop-blur-xl">
+          <div className="mx-auto flex max-w-md items-center justify-around">
+            {items.map((item) => {
+              const active = pathname === item.href || (item.href !== '/app' && item.href !== '/driver' && pathname.startsWith(item.href));
+              return (
+                <Link key={item.href} href={item.href} className="flex flex-col items-center gap-1 rounded-xl px-3 py-1.5 transition-colors">
+                  <div className="relative">
+                    <item.icon
+                      size={22}
+                      className={`transition-colors ${active ? 'text-primary' : 'text-muted-foreground'}`}
+                    />
+                    {active && (
+                      <motion.div
+                        layoutId="nav-dot"
+                        className="absolute -bottom-1 left-1/2 h-1 w-1 -translate-x-1/2 rounded-full bg-primary"
+                      />
+                    )}
+                  </div>
+                  <span className={`text-[10px] font-medium transition-colors ${active ? 'text-primary' : 'text-muted-foreground'}`}>
+                    {item.label}
+                  </span>
+                </Link>
+              );
+            })}
+          </div>
+        </div>
+      </div>
+
+      <aside className="fixed bottom-0 left-0 top-0 z-40 hidden w-20 flex-col items-center gap-3 border-r border-white/5 bg-surface/95 px-2 py-5 backdrop-blur-xl md:flex">
+        <div className="mb-2 flex h-11 w-11 items-center justify-center rounded-2xl bg-gradient-cta text-white">
+          {role === 'driver' ? <LayoutDashboard size={21} /> : <Map size={21} />}
+        </div>
+        <nav className="flex w-full flex-1 flex-col items-center gap-2">
           {items.map((item) => {
             const active = pathname === item.href || (item.href !== '/app' && item.href !== '/driver' && pathname.startsWith(item.href));
             return (
-              <Link key={item.href} href={item.href} className="flex flex-col items-center gap-1 px-3 py-1.5 rounded-xl transition-colors">
-                <div className="relative">
+              <Link
+                key={item.href}
+                href={item.href}
+                title={item.label}
+                className={`flex w-full flex-col items-center gap-1 rounded-2xl px-2 py-3 text-[10px] font-medium transition-colors ${
+                  active ? 'bg-primary/10 text-primary' : 'text-muted-foreground hover:bg-surface-2 hover:text-foreground'
+                }`}
+              >
+                <div className="relative flex h-6 items-center">
                   <item.icon
-                    size={22}
-                    className={`transition-colors ${active ? 'text-[#6C63FF]' : 'text-[#4A4A5A]'}`}
+                    size={21}
+                    className="transition-colors"
                   />
                   {active && (
                     <motion.div
-                      layoutId="nav-dot"
-                      className="absolute -bottom-1 left-1/2 -translate-x-1/2 w-1 h-1 rounded-full bg-[#6C63FF]"
+                      layoutId="nav-rail-dot"
+                      className="absolute -right-3 top-1/2 h-1.5 w-1.5 -translate-y-1/2 rounded-full bg-primary"
                     />
                   )}
                 </div>
-                <span className={`text-[10px] font-medium transition-colors ${active ? 'text-[#6C63FF]' : 'text-[#4A4A5A]'}`}>
-                  {item.label}
-                </span>
+                <span>{item.label}</span>
               </Link>
             );
           })}
-        </div>
-      </div>
-    </div>
+        </nav>
+      </aside>
+    </>
   );
 }

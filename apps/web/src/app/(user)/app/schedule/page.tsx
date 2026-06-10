@@ -60,7 +60,7 @@ export default function SchedulePage() {
   };
 
   return (
-    <div className="min-h-screen bg-[#0A0A0F] pb-24">
+    <div className="min-h-screen bg-background pb-24 md:pl-20">
       <div className="safe-top px-4 pt-4 pb-4 border-b border-[rgba(255,255,255,0.06)]">
         <div className="flex items-center gap-3">
           <Link href="/app" className="text-[#8B8B9E] hover:text-white transition-colors">

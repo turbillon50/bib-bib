@@ -101,7 +101,7 @@ export default function DriverDashboard() {
   };
 
   return (
-    <div className="h-screen bg-[#0A0A0F] flex flex-col overflow-hidden">
+    <div className="flex min-h-screen flex-col overflow-x-hidden bg-background md:pl-20">
       {/* Map */}
       <div className="flex-1 relative">
         <MapView
@@ -113,10 +113,13 @@ export default function DriverDashboard() {
         {/* Top bar */}
         <div className="absolute top-0 left-0 right-0 safe-top px-4 pt-4">
           <div className="flex items-center justify-between">
-            <div className="bg-[rgba(17,17,24,0.9)] backdrop-blur-xl rounded-2xl px-4 py-2.5 border border-[rgba(255,255,255,0.08)]">
-              <div className="text-xs text-[#8B8B9E]">Hoy</div>
-              <div className="font-mono font-black text-lg bg-gradient-to-r from-[#6C63FF] to-[#00D4AA] bg-clip-text text-transparent">
-                ${todayEarnings.toFixed(2)}
+            <div className="flex items-center gap-3 rounded-2xl border border-[rgba(255,255,255,0.08)] bg-surface/90 px-3 py-2.5 backdrop-blur-xl">
+              <img src="/brand/driver.jpg" alt="" className="h-10 w-10 rounded-xl object-cover" />
+              <div>
+                <div className="text-xs text-[#8B8B9E]">Hoy</div>
+                <div className="bg-gradient-to-r from-[#6C63FF] to-[#00D4AA] bg-clip-text font-mono text-lg font-black text-transparent">
+                  ${todayEarnings.toFixed(2)}
+                </div>
               </div>
             </div>
             {subscriptionStatus !== 'active' && (

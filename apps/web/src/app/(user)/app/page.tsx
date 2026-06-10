@@ -43,7 +43,7 @@ export default function PassengerMapPage() {
   }, [location?.latitude, location?.longitude]);
 
   return (
-    <div className="flex min-h-screen max-w-[430px] mx-auto flex-col bg-background overflow-hidden">
+    <div className="mx-auto flex min-h-screen max-w-[430px] flex-col overflow-x-hidden bg-background md:max-w-none md:pl-20">
       {/* Map area */}
       <div className="relative h-[42vh] w-full">
         <MapView
@@ -57,9 +57,7 @@ export default function PassengerMapPage() {
         <div className="absolute top-0 left-0 right-0 px-4 pt-4">
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-2 bg-[rgba(17,17,24,0.9)] backdrop-blur-xl rounded-2xl px-3 py-2 border border-[rgba(255,255,255,0.08)]">
-              <div className="w-7 h-7 rounded-lg bg-gradient-cta flex items-center justify-center">
-                <MapPin size={13} className="text-white" />
-              </div>
+              <img src="/brand/app.jpg" alt="" className="h-7 w-7 rounded-lg object-cover" />
               <span className="font-bold text-sm">RideMe</span>
             </div>
             <button

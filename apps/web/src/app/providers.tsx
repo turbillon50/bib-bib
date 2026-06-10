@@ -5,6 +5,7 @@ import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { AnimatePresence } from 'framer-motion';
 import { useAuthStore } from '@/store/authStore';
 import { connectSocket, disconnectSocket } from '@/lib/socket';
+import { BrandingProvider } from '@/components/BrandingProvider';
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -37,11 +38,13 @@ function AppProviders({ children }: { children: ReactNode }) {
 export function Providers({ children }: { children: ReactNode }) {
   return (
     <QueryClientProvider client={queryClient}>
-      <AppProviders>
-        <AnimatePresence mode="wait">
-          {children}
-        </AnimatePresence>
-      </AppProviders>
+      <BrandingProvider>
+        <AppProviders>
+          <AnimatePresence mode="wait">
+            {children}
+          </AnimatePresence>
+        </AppProviders>
+      </BrandingProvider>
     </QueryClientProvider>
   );
 }

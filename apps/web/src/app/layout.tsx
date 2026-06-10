@@ -24,10 +24,12 @@ export default function RootLayout({ children }: { children: ReactNode }) {
           <meta name="apple-mobile-web-app-capable" content="yes" />
           <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
           <meta name="apple-mobile-web-app-title" content="RideMe" />
+          <meta name="theme-color" content="#6C63FF" />
           <link rel="manifest" href="/manifest.json" />
-          <link rel="apple-touch-icon" href="/icons/icon-192x192.png" />
+          <link rel="icon" href="/brand/icon-192.png" />
+          <link rel="apple-touch-icon" href="/brand/apple-touch-icon.png" />
         </head>
-        <body>
+        <body className="min-h-screen bg-background text-foreground">
           <Providers>
             {children}
           </Providers>

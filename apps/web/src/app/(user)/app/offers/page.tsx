@@ -80,7 +80,7 @@ export default function OffersPage() {
   const secs = timeLeft % 60;
 
   return (
-    <div className="min-h-screen bg-[#0A0A0F] flex flex-col">
+    <div className="flex min-h-screen flex-col bg-background md:pl-20">
       {/* Header */}
       <div className="safe-top px-4 pt-4 pb-3 border-b border-[rgba(255,255,255,0.06)]">
         <div className="flex items-center justify-between mb-3">

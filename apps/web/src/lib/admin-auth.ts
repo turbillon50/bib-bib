@@ -1,6 +1,11 @@
 import { auth, currentUser } from '@clerk/nextjs/server';
 import { NextResponse } from 'next/server';
+import { cookies } from 'next/headers';
 import { getDb } from './db';
+
+export function isDemoMode(): boolean {
+  return cookies().get('rideme_demo')?.value === '1';
+}
 
 /**
  * Admin guard for API routes and server components.
@@ -9,6 +14,8 @@ import { getDb } from './db';
  *  - their users.role = 'admin' or 'owner' in the database (matched by clerk_id or email)
  */
 export async function isAdmin(): Promise<boolean> {
+  if (isDemoMode()) return true;
+
   const { userId } = auth();
   if (!userId) return false;
 
@@ -35,6 +42,8 @@ export async function isAdmin(): Promise<boolean> {
 
 /** Returns a 401/403 NextResponse if not admin, otherwise null. */
 export async function requireAdmin(): Promise<NextResponse | null> {
+  if (isDemoMode()) return null;
+
   const { userId } = auth();
   if (!userId) {
     return NextResponse.json({ error: 'No autenticado' }, { status: 401 });

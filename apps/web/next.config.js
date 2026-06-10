@@ -5,6 +5,26 @@ const withPWA = require('next-pwa')({
   skipWaiting: true,
   disable: process.env.NODE_ENV === 'development',
   buildExcludes: [/middleware-manifest\.json$/],
+  runtimeCaching: [
+    {
+      urlPattern: /^https?:\/\/[^/]+\/$/,
+      handler: 'NetworkFirst',
+      options: { cacheName: 'start-url' },
+    },
+    {
+      urlPattern: /^https?:\/\/[^/]+\/brand\/.*\.(?:png|jpg|jpeg|webp)$/i,
+      handler: 'StaleWhileRevalidate',
+      options: { cacheName: 'brand-assets' },
+    },
+    {
+      urlPattern: /^https?:\/\/[^/]+\/api\/(?:branding|support)/,
+      handler: 'NetworkFirst',
+      options: {
+        cacheName: 'rideme-api',
+        networkTimeoutSeconds: 10,
+      },
+    },
+  ],
 });
 
 const nextConfig = {

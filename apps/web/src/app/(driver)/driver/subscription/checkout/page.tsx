@@ -54,7 +54,7 @@ export default function SubscriptionCheckoutPage() {
   ];
 
   return (
-    <div className="min-h-screen bg-[#0A0A0F]">
+    <div className="min-h-screen bg-background md:pl-20">
       <div className="safe-top px-4 pt-4 pb-4 border-b border-[rgba(255,255,255,0.06)]">
         <div className="flex items-center gap-3">
           <Link href="/driver/subscription" className="text-[#8B8B9E] hover:text-white transition-colors">

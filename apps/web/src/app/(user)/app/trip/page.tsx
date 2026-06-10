@@ -82,7 +82,7 @@ export default function TripTrackingPage() {
   const color = statusColors[status] ?? '#6C63FF';
 
   return (
-    <div className="h-screen bg-[#0A0A0F] flex flex-col overflow-hidden">
+    <div className="flex min-h-screen flex-col overflow-x-hidden bg-background md:pl-20">
       {/* Map */}
       <div className="flex-1 relative">
         <MapView

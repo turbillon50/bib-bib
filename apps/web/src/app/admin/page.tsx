@@ -32,6 +32,20 @@ export default function AdminDashboard() {
         <p className="text-sm text-muted-foreground">Resumen operativo de RideMe</p>
       </div>
 
+      <div className="grid gap-3 md:grid-cols-3">
+        {[
+          { src: '/brand/hero.jpg', label: 'Operaciones RideMe' },
+          { src: '/brand/app.jpg', label: 'Experiencia usuario' },
+          { src: '/brand/driver.jpg', label: 'Red de conductores' },
+        ].map((item) => (
+          <div key={item.src} className="relative h-28 overflow-hidden rounded-xl border border-white/5 bg-surface">
+            <img src={item.src} alt="" className="h-full w-full object-cover" />
+            <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent" />
+            <div className="absolute bottom-3 left-3 text-sm font-semibold text-white">{item.label}</div>
+          </div>
+        ))}
+      </div>
+
       <div className="grid grid-cols-2 gap-3 md:grid-cols-4">
         <KpiCard label="Viajes hoy" value={String(k.rides_today ?? 0)} accent />
         <KpiCard label="Viajes activos" value={String(k.rides_active ?? 0)} />

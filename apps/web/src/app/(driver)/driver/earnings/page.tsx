@@ -41,7 +41,7 @@ export default function EarningsPage() {
   }, []);
 
   return (
-    <div className="min-h-screen bg-[#0A0A0F] pb-24">
+    <div className="min-h-screen bg-background pb-24 md:pl-20">
       {/* Header */}
       <div className="safe-top px-4 pt-4 pb-4 border-b border-[rgba(255,255,255,0.06)]">
         <div className="flex items-center gap-3">

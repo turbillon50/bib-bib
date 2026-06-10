@@ -28,6 +28,8 @@ const STATUS_STYLES: Record<string, string> = {
   rejected: 'bg-rose-500/15 text-rose-400',
   active: 'bg-emerald-500/15 text-emerald-400',
   inactive: 'bg-zinc-500/15 text-zinc-400',
+  open: 'bg-amber-500/15 text-amber-400',
+  resolved: 'bg-emerald-500/15 text-emerald-400',
   admin: 'bg-primary/15 text-primary',
   driver: 'bg-sky-500/15 text-sky-400',
   passenger: 'bg-zinc-500/15 text-zinc-300',
