@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
-import { MapPin, Clock } from 'lucide-react';
+import { MapPin, Clock } from '@/components/icons';
 import { MapView } from '@/components/maps/MapView';
 import { BottomSheet } from '@/components/ride/BottomSheet';
 import { BottomNav } from '@/components/layout/BottomNav';

@@ -1,7 +1,7 @@
 "use client"
 
 import { motion } from "framer-motion"
-import { Car } from "lucide-react"
+import { Car } from '@/components/icons'
 
 type VehicleType = "standard" | "comfort" | "xl"
 

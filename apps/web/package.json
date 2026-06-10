@@ -22,7 +22,6 @@
     "critters": "^0.0.23",
     "date-fns": "^3.6.0",
     "framer-motion": "^11.18.2",
-    "lucide-react": "^0.408.0",
     "next": "14.2.5",
     "next-pwa": "^5.6.0",
     "next-safe-action": "^8.5.2",

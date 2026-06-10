@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
-import { ArrowLeft, Car, FileText, User, Upload, LogOut, Check, Shield } from 'lucide-react';
+import { ArrowLeft, Car, FileText, User, Upload, LogOut, Check, Shield } from '@/components/icons';
 import { BottomNav } from '@/components/layout/BottomNav';
 import { useAuthStore } from '@/store/authStore';
 import { api } from '@/lib/api';

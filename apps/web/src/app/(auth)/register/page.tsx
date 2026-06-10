@@ -4,7 +4,7 @@ import { Suspense, useState } from 'react';
 import { useRouter, useSearchParams } from 'next/navigation';
 import { motion } from 'framer-motion';
 import Link from 'next/link';
-import { MapPin, Eye, EyeOff, Car, User, ArrowRight } from 'lucide-react';
+import { MapPin, Eye, EyeOff, Car, User, ArrowRight } from '@/components/icons';
 import { useAuthStore } from '@/store/authStore';
 
 type Role = 'passenger' | 'driver';

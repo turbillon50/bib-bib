@@ -3,7 +3,7 @@
 import { useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { motion } from 'framer-motion';
-import { MapPin, Navigation, Phone, MessageCircle, CheckCircle, Flag } from 'lucide-react';
+import { MapPin, Navigation, Phone, MessageCircle, CheckCircle, Flag } from '@/components/icons';
 import { MapView } from '@/components/maps/MapView';
 import { useSocket } from '@/hooks/useSocket';
 import { useGeolocation } from '@/hooks/useGeolocation';

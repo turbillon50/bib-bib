@@ -1,7 +1,7 @@
 "use client"
 
 import { motion } from "framer-motion"
-import { Banknote, CreditCard } from "lucide-react"
+import { Banknote, CreditCard } from '@/components/icons'
 
 type PaymentMethod = "cash" | "card"
 

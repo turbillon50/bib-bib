@@ -1,7 +1,7 @@
 "use client"
 
 import { motion } from "framer-motion"
-import { ArrowUpDown } from "lucide-react"
+import { ArrowUpDown } from '@/components/icons'
 
 interface LocationInputsProps {
   pickup: string

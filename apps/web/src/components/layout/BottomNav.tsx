@@ -3,7 +3,7 @@
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { motion } from 'framer-motion';
-import { Map, Clock, History, User, LayoutDashboard, DollarSign, CreditCard } from 'lucide-react';
+import { Map, Clock, History, User, LayoutDashboard, DollarSign, CreditCard } from '@/components/icons';
 
 interface NavItem {
   href: string;

@@ -7,7 +7,7 @@ import { motion } from 'framer-motion';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
-import { Eye, EyeOff, Car, Mail, Lock, Loader2 } from 'lucide-react';
+import { Eye, EyeOff, Car, Mail, Lock, Loader2 } from '@/components/icons';
 import { useAuthStore } from '@/store/authStore';
 
 const loginSchema = z.object({

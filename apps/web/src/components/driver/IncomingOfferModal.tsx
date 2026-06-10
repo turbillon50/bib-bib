@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { MapPin, Clock, DollarSign, X, Check, ChevronRight } from 'lucide-react';
+import { MapPin, Clock, DollarSign, X, Check, ChevronRight } from '@/components/icons';
 
 interface IncomingRide {
   rideId: string;

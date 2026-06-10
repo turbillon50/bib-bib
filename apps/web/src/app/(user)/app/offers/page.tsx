@@ -3,7 +3,7 @@
 import { useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { motion, AnimatePresence } from 'framer-motion';
-import { MapPin, Clock, X, Loader2 } from 'lucide-react';
+import { MapPin, Clock, X, Loader2 } from '@/components/icons';
 import { OfferCard } from '@/components/ride/OfferCard';
 import { useSocket } from '@/hooks/useSocket';
 import { useTripStore } from '@/store/tripStore';

@@ -3,7 +3,7 @@
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { motion } from 'framer-motion';
-import { ArrowLeft, CreditCard, Lock, Zap, Check } from 'lucide-react';
+import { ArrowLeft, CreditCard, Lock, Zap, Check } from '@/components/icons';
 import { useDriverStore } from '@/store/driverStore';
 import { api } from '@/lib/api';
 import Link from 'next/link';

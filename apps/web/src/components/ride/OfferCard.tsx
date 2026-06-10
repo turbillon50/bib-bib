@@ -1,7 +1,7 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { Star, Clock, Check, X } from 'lucide-react';
+import { Star, Clock, Check, X } from '@/components/icons';
 import type { Offer } from '@/types';
 
 interface OfferCardProps {

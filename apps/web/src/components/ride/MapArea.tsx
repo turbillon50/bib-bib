@@ -1,7 +1,7 @@
 "use client"
 
 import { motion } from "framer-motion"
-import { Car } from "lucide-react"
+import { Car } from '@/components/icons'
 
 const drivers = [
   { id: 1, x: 25, y: 35, rotation: 45 },

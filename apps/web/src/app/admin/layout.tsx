@@ -1,7 +1,7 @@
 import { redirect } from 'next/navigation';
 import Link from 'next/link';
 import { isAdmin } from '@/lib/admin-auth';
-import { LayoutDashboard, Car, Users, Route, Mail } from 'lucide-react';
+import { LayoutDashboard, Car, Users, Route, Mail } from '@/components/icons';
 
 export const dynamic = 'force-dynamic';
 

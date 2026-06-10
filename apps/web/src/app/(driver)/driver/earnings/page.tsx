@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
-import { TrendingUp, ArrowLeft } from 'lucide-react';
+import { TrendingUp, ArrowLeft } from '@/components/icons';
 import { BottomNav } from '@/components/layout/BottomNav';
 import { api } from '@/lib/api';
 import Link from 'next/link';

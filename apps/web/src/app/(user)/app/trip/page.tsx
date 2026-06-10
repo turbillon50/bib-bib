@@ -3,7 +3,7 @@
 import { useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Phone, MessageCircle, MapPin, Star, ChevronDown, Navigation } from 'lucide-react';
+import { Phone, MessageCircle, MapPin, Star, ChevronDown, Navigation } from '@/components/icons';
 import { MapView } from '@/components/maps/MapView';
 import { useSocket } from '@/hooks/useSocket';
 import { useTripStore } from '@/store/tripStore';

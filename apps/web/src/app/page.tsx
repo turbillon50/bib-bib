@@ -13,7 +13,7 @@ import {
   MapPin,
   Clock,
   ArrowRight,
-} from 'lucide-react';
+} from '@/components/icons';
 
 const FEATURES = [
   {

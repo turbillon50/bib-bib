@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
-import { CreditCard, CheckCircle, AlertCircle, ArrowLeft, ExternalLink, Zap } from 'lucide-react';
+import { CreditCard, CheckCircle, AlertCircle, ArrowLeft, ExternalLink, Zap } from '@/components/icons';
 import { BottomNav } from '@/components/layout/BottomNav';
 import { useDriverStore } from '@/store/driverStore';
 import { api } from '@/lib/api';

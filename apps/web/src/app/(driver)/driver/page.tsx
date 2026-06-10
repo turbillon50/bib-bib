@@ -11,7 +11,7 @@ import { useGeolocation } from '@/hooks/useGeolocation';
 import { useDriverStore } from '@/store/driverStore';
 import { useAuthStore } from '@/store/authStore';
 import { api } from '@/lib/api';
-import { AlertCircle } from 'lucide-react';
+import { AlertCircle } from '@/components/icons';
 
 interface IncomingRide {
   rideId: string;

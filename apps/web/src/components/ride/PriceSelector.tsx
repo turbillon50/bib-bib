@@ -1,7 +1,7 @@
 "use client"
 
 import { motion, AnimatePresence } from "framer-motion"
-import { Minus, Plus } from "lucide-react"
+import { Minus, Plus } from '@/components/icons'
 
 interface PriceSelectorProps {
   price: number

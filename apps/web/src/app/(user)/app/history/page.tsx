@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
-import { ArrowLeft, MapPin, Clock, Star, Banknote, CreditCard } from 'lucide-react';
+import { ArrowLeft, MapPin, Clock, Star, Banknote, CreditCard } from '@/components/icons';
 import { BottomNav } from '@/components/layout/BottomNav';
 import { api } from '@/lib/api';
 import Link from 'next/link';

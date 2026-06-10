@@ -3,7 +3,7 @@
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { motion } from 'framer-motion';
-import { ArrowLeft, MapPin, Calendar, Clock, DollarSign, Banknote, CreditCard } from 'lucide-react';
+import { ArrowLeft, MapPin, Calendar, Clock, DollarSign, Banknote, CreditCard } from '@/components/icons';
 import { BottomNav } from '@/components/layout/BottomNav';
 import { useTripStore } from '@/store/tripStore';
 import { api } from '@/lib/api';
