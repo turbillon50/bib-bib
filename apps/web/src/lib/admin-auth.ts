@@ -5,7 +5,7 @@ import { getDb } from './db';
 
 const CLERK_ON = /^pk_(test|live)_/.test(process.env.NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY||'') && !/placeholder|REPLACE|xxx/i.test(process.env.NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY||'');
 export function isDemoMode(): boolean {
-  return cookies().get('rideme_demo')?.value === '1';
+  return process.env.NEXT_PUBLIC_DEMO === '1' && cookies().get('rideme_demo')?.value === '1';
 }
 
 /**

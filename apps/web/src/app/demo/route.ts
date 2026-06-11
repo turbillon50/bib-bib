@@ -8,6 +8,9 @@ function safeRedirectTarget(value: string | null): string {
 }
 
 export function GET(req: NextRequest) {
+  if (process.env.NEXT_PUBLIC_DEMO !== '1') {
+    return NextResponse.redirect(new URL('/sign-in', req.url));
+  }
   const to = safeRedirectTarget(req.nextUrl.searchParams.get('to'));
   const res = NextResponse.redirect(new URL(to, req.url));
 
