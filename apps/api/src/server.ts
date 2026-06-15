@@ -18,7 +18,7 @@ async function start() {
     await initializeJobQueues();
 
     server.listen(env.PORT, () => {
-      logger.info(`RideMe API running on port ${env.PORT} [${env.NODE_ENV}]`);
+      logger.info(`Bib-Bib API running on port ${env.PORT} [${env.NODE_ENV}]`);
     });
   } catch (err) {
     logger.error('Failed to start server', { error: err });

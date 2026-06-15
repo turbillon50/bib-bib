@@ -1,8 +1,8 @@
-# RideMe - PRODUCTION READY
+# Bib-Bib - PRODUCTION READY
 
 **Status:** 100% LISTO PARA DEPLOY A PRODUCCION
 
-**Dominio:** https://rideme.ink
+**Dominio:** https://bib-bib.ink
 **Fecha:** 11 de Mayo 2026
 
 ---
@@ -26,7 +26,7 @@
 ### Notificaciones (Resend Email)
 - Resend configurado
 - RESEND_API_KEY: Configurada en Vercel (encrypted)
-- RESEND_FROM_EMAIL: noreply@rideme.ink
+- RESEND_FROM_EMAIL: noreply@bib-bib.ink
 - DNS records agregados (SPF, DKIM, DMARC, MX)
 - Servicio de notificaciones completamente refactorizado
 
@@ -34,7 +34,7 @@
 - Stripe configurado
 - STRIPE_SECRET_KEY: Configurada en Vercel (encrypted)
 - NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY: Configurada en Vercel
-- Webhook configurado: https://rideme.ink/api/webhooks/stripe
+- Webhook configurado: https://bib-bib.ink/api/webhooks/stripe
 - STRIPE_WEBHOOK_SECRET: Configurada en Vercel (encrypted)
 - Producto de suscripcion creado (450 MXN/mes)
 - STRIPE_MONTHLY_PRICE_ID: Configurada en Vercel
@@ -122,7 +122,7 @@
 ## Proximos Pasos para DEPLOY
 
 ### 1. En Vercel Dashboard:
-Go to: https://vercel.com/projects/rideme
+Go to: https://vercel.com/projects/bib-bib
 1. Click "Deploy"
 2. Select branch: audit-project
 3. Click "Deploy"
@@ -131,12 +131,12 @@ Go to: https://vercel.com/projects/rideme
 - Vercel automaticamente:
   - Compilara el codigo
   - Ejecutara builds (Next.js + API)
-  - Asignara URL de production: https://rideme.ink
+  - Asignara URL de production: https://bib-bib.ink
   - Configurara SSL/TLS
 
 ### 3. Testing Post-Deploy:
-1. https://rideme.ink - Verificar que carga correctamente
-2. https://rideme.ink/api/health - Verificar que API esta corriendo
+1. https://bib-bib.ink - Verificar que carga correctamente
+2. https://bib-bib.ink/api/health - Verificar que API esta corriendo
 3. Webhook Stripe - Verificar que recibe eventos
 
 ---
@@ -146,7 +146,7 @@ Go to: https://vercel.com/projects/rideme
 - Todas las API keys guardadas como encrypted en Vercel
 - Webhooks verificados con signing secrets
 - HTTPS/SSL habilitado automaticamente
-- CORS configurado solo para rideme.ink
+- CORS configurado solo para bib-bib.ink
 - JWT tokens con expiracion de 15 minutos
 - Refresh tokens con expiracion de 7 dias
 

@@ -62,7 +62,7 @@ export function SupportButton() {
             <div className="mb-4 flex items-start justify-between gap-4">
               <div>
                 <h2 className="text-lg font-bold">Reportar un problema</h2>
-                <p className="text-sm text-muted-foreground">El equipo de RideMe revisara tu reporte.</p>
+                <p className="text-sm text-muted-foreground">El equipo de Bib-Bib revisara tu reporte.</p>
               </div>
               <button
                 type="button"

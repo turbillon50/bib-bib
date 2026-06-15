@@ -17,5 +17,5 @@ export async function GET() {
   } catch (e: any) {
     db = `error: ${e?.message ?? 'unknown'}`;
   }
-  return NextResponse.json({ status: 'ok', service: 'rideme-web', time: new Date().toISOString(), db, invitations });
+  return NextResponse.json({ status: 'ok', service: 'bib-bib-web', time: new Date().toISOString(), db, invitations });
 }

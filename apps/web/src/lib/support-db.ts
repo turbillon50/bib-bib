@@ -21,7 +21,7 @@ export function getOptionalResend(): Resend | null {
 }
 
 export function supportFromEmail(): string {
-  return process.env.RESEND_FROM_EMAIL || 'RideMe <no-reply@rideme.ink>';
+  return process.env.RESEND_FROM_EMAIL || 'Bib-Bib <no-reply@bib-bib.ink>';
 }
 
 export function supportAdminEmail(): string | null {

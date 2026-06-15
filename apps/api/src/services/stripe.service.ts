@@ -154,7 +154,7 @@ export async function createPaymentIntentForRide(
     confirm: !!paymentMethodId,
     off_session: !!paymentMethodId,
     metadata: { rideId },
-    description: `RideMe trip payment - ${rideId}`,
+    description: `Bib-Bib trip payment - ${rideId}`,
   });
 
   return pi;
@@ -262,7 +262,7 @@ export async function chargeDriverTripFee(
     confirm: true,
     off_session: true,
     metadata: { driverId, rideId, type: 'trip_fee' },
-    description: `RideMe driver trip fee - ride ${rideId}`,
+    description: `Bib-Bib driver trip fee - ride ${rideId}`,
   });
 
   // Record trip fee intent on ride

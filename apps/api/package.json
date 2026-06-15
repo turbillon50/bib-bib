@@ -1,7 +1,7 @@
 {
-  "name": "@rideme/api",
+  "name": "@bib-bib/api",
   "version": "1.0.0",
-  "description": "RideMe backend API",
+  "description": "Bib-Bib backend API",
   "main": "dist/server.js",
   "scripts": {
     "dev": "ts-node-dev --respawn --transpile-only src/server.ts",

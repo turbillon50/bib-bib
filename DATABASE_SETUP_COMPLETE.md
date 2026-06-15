@@ -148,7 +148,7 @@ Con la base de datos lista, los siguientes pasos para producción son:
 
 **Resend:**
 - `RESEND_API_KEY` (comienza con `re_`)
-- `RESEND_FROM_EMAIL` (ej: noreply@rideme.ink)
+- `RESEND_FROM_EMAIL` (ej: noreply@bib-bib.ink)
 
 **Stripe:**
 - `STRIPE_SECRET_KEY` (comienza con `sk_live_` o `sk_test_`)
@@ -180,13 +180,13 @@ CNAME @ -> cname.vercel-dns.com
 CNAME api -> cname.vercel-dns.com
 TXT @ (SPF de Resend) -> v=spf1 include:resend.com ~all
 CNAME (DKIM de Resend) -> [resend-generated-cname]
-TXT _dmarc -> v=DMARC1; p=quarantine; rua=mailto:noreply@rideme.ink
+TXT _dmarc -> v=DMARC1; p=quarantine; rua=mailto:noreply@bib-bib.ink
 ```
 
 ### 4. Configurar Webhooks
 
 **Stripe Webhook:**
-- URL: `https://rideme.ink/api/v1/webhooks/stripe`
+- URL: `https://bib-bib.ink/api/v1/webhooks/stripe`
 - Events: payment_intent.succeeded, subscription.created, etc.
 
 ---

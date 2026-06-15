@@ -62,11 +62,11 @@ export async function sendVerificationEmail(
   verificationLink: string
 ): Promise<void> {
   const payload: EmailNotificationPayload = {
-    subject: 'Verify your RideMe account',
+    subject: 'Verify your Bib-Bib account',
     html: `
       <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
         <h2>Verify your email</h2>
-        <p>Click the link below to verify your RideMe account:</p>
+        <p>Click the link below to verify your Bib-Bib account:</p>
         <a href="${verificationLink}" style="display: inline-block; padding: 10px 20px; background-color: #007AFF; color: white; text-decoration: none; border-radius: 5px;">
           Verify Email
         </a>
@@ -305,7 +305,7 @@ async function logNotification(data: {
  * logging the code (useful in development) and recording the attempt.
  */
 export async function sendOtpSms(phone: string, code: string): Promise<void> {
-  const message = `Tu código de verificación RideMe es: ${code}. Expira en 5 minutos.`;
+  const message = `Tu código de verificación Bib-Bib es: ${code}. Expira en 5 minutos.`;
 
   const twilioSid = process.env.TWILIO_ACCOUNT_SID;
   const twilioToken = process.env.TWILIO_AUTH_TOKEN;

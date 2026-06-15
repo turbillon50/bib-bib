@@ -1,9 +1,9 @@
-REFACTORIZACIÓN COMPLETADA - RideMe Production
+REFACTORIZACIÓN COMPLETADA - Bib-Bib Production
 ================================================
 
 ESTADO: ✅ 100% COMPLETADO
 
-La refactorización de RideMe ha sido finalizada exitosamente. El proyecto ha sido migrado de Firebase + Twilio a Clerk + Resend, y está listo para deployment en producción.
+La refactorización de Bib-Bib ha sido finalizada exitosamente. El proyecto ha sido migrado de Firebase + Twilio a Clerk + Resend, y está listo para deployment en producción.
 
 ---
 
@@ -108,7 +108,7 @@ PASO 1: Obtener Credenciales (Tú lo haces)
   1.3 Ir a https://resend.com
       - Crear cuenta
       - Crear API Key → RESEND_API_KEY
-      - Agregar dominio rideme.ink
+      - Agregar dominio bib-bib.ink
 
 PASO 2: Configurar DNS en Name.com (Tú lo haces)
   2.1 Agregar CNAME records para Vercel
@@ -118,7 +118,7 @@ PASO 2: Configurar DNS en Name.com (Tú lo haces)
   2.5 Esperar 24-48 horas para propagación
 
 PASO 3: Agregar Variables a Vercel (Tú lo haces)
-  3.1 Ir a vercel.com > RideMe project > Settings
+  3.1 Ir a vercel.com > Bib-Bib project > Settings
   3.2 Environment Variables
   3.3 Agregar todas las variables (ver lista abajo)
 
@@ -139,7 +139,7 @@ BACKEND (apps/api):
 DATABASE_URL=postgresql://...
 CLERK_SECRET_KEY=sk_live_...
 RESEND_API_KEY=re_...
-RESEND_FROM_EMAIL=noreply@rideme.ink
+RESEND_FROM_EMAIL=noreply@bib-bib.ink
 STRIPE_SECRET_KEY=sk_live_...
 STRIPE_WEBHOOK_SECRET=whsec_...
 STRIPE_MONTHLY_PRICE_ID=price_...
@@ -147,13 +147,13 @@ STRIPE_PER_TRIP_AMOUNT=150
 GOOGLE_MAPS_API_KEY=AIza...
 AWS_ACCESS_KEY_ID=AKIA...
 AWS_SECRET_ACCESS_KEY=...
-AWS_S3_BUCKET=rideme-docs
+AWS_S3_BUCKET=bib-bib-docs
 REDIS_URL=redis://...
 JWT_ACCESS_SECRET=[generar localmente]
 JWT_REFRESH_SECRET=[generar localmente]
-FRONTEND_URL=https://rideme.ink
-API_URL=https://api.rideme.ink
-CORS_ORIGINS=https://rideme.ink,https://www.rideme.ink
+FRONTEND_URL=https://bib-bib.ink
+API_URL=https://api.bib-bib.ink
+CORS_ORIGINS=https://bib-bib.ink,https://www.bib-bib.ink
 NODE_ENV=production
 
 FRONTEND (apps/web):
@@ -164,7 +164,7 @@ NEXT_PUBLIC_CLERK_AFTER_SIGN_IN_URL=/dashboard
 NEXT_PUBLIC_CLERK_AFTER_SIGN_UP_URL=/choose-role
 NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY=pk_live_...
 NEXT_PUBLIC_GOOGLE_MAPS_API_KEY=AIza...
-NEXT_PUBLIC_API_URL=https://api.rideme.ink
+NEXT_PUBLIC_API_URL=https://api.bib-bib.ink
 
 ---
 
@@ -187,7 +187,7 @@ TESTING EN PRODUCCIÓN
 Después de desplegar:
 
 1. Test Clerk Sign-in
-   - Ve a https://rideme.ink/sign-in
+   - Ve a https://bib-bib.ink/sign-in
    - Intenta crear cuenta
    - Verifica email
 
@@ -197,7 +197,7 @@ Después de desplegar:
 
 3. Test Dashboard Access
    - Después de verificar, accede a dashboard
-   - URL: https://rideme.ink/dashboard
+   - URL: https://bib-bib.ink/dashboard
 
 4. Test Stripe
    - Intenta suscribirse como conductor

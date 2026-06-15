@@ -1,4 +1,4 @@
-// Jerarquía de invitaciones por rol — RideMe
+// Jerarquía de invitaciones por rol — Bib-Bib
 // Cada quien invita su nivel o más abajo, NUNCA hacia arriba.
 //
 //   owner (admin nivel 1 / dueño = Luis)  -> admin, driver, passenger

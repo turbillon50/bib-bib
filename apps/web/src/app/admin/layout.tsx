@@ -25,7 +25,7 @@ export default async function AdminLayout({ children }: { children: React.ReactN
     <div className="min-h-screen bg-background text-foreground flex">
       <aside className="hidden w-64 shrink-0 flex-col gap-1 border-r border-white/5 bg-surface p-4 md:flex">
         <div className="px-3 py-4">
-          <span className="text-lg font-bold text-primary">RideMe</span>
+          <span className="text-lg font-bold text-primary">Bib-Bib</span>
           <span className="ml-2 text-xs uppercase tracking-widest text-muted-foreground">Admin</span>
         </div>
         {nav.map(({ href, label, icon: Icon }) => (

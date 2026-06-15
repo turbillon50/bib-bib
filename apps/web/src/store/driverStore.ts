@@ -81,7 +81,7 @@ export const useDriverStore = create<DriverStore>()(
       resetDriverState: () => set(initialState),
     }),
     {
-      name: 'rideme-driver',
+      name: 'bib-bib-driver',
       storage: createJSONStorage(() => localStorage),
       partialize: (state) => ({
         isOnline: state.isOnline,

@@ -5,7 +5,7 @@ import { applyBranding, applyTheme, type BrandingConfig } from '@/components/Bra
 import { inputCls } from '@/components/admin/ui';
 
 const DEFAULT_BRANDING: BrandingConfig = {
-  app_name: 'RideMe',
+  app_name: 'Bib-Bib',
   primary_color: '#6C63FF',
   accent_color: '#00D4AA',
   logo_url: '/brand/hero.jpg',
@@ -64,7 +64,7 @@ export default function AdminBrandingPage() {
     <div className="max-w-3xl space-y-5">
       <div>
         <h1 className="text-2xl font-bold">Personalizacion</h1>
-        <p className="text-sm text-muted-foreground">White-label de RideMe para nombre, colores e iconos.</p>
+        <p className="text-sm text-muted-foreground">White-label de Bib-Bib para nombre, colores e iconos.</p>
       </div>
 
       <form onSubmit={submit} className="rounded-xl border border-white/5 bg-surface p-5">
@@ -113,7 +113,7 @@ export default function AdminBrandingPage() {
           <div className="flex items-center gap-3">
             <img src={form.icon_url || '/brand/icon-192.png'} alt="" className="h-12 w-12 rounded-xl object-cover" />
             <div>
-              <div className="font-bold" style={{ color: form.primary_color }}>{form.app_name || 'RideMe'}</div>
+              <div className="font-bold" style={{ color: form.primary_color }}>{form.app_name || 'Bib-Bib'}</div>
               <div className="text-sm text-muted-foreground">Vista previa de marca</div>
             </div>
           </div>

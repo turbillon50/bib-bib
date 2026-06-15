@@ -1,7 +1,7 @@
-# RideMe Production Refactoring - Migration Guide
+# Bib-Bib Production Refactoring - Migration Guide
 
 ## Overview
-This document outlines the migration from Firebase Auth + Twilio SMS to **Clerk Authentication** + **Resend Email** notifications for the RideMe rideshare application.
+This document outlines the migration from Firebase Auth + Twilio SMS to **Clerk Authentication** + **Resend Email** notifications for the Bib-Bib rideshare application.
 
 ## Changes Made
 
@@ -143,14 +143,14 @@ This document outlines the migration from Firebase Auth + Twilio SMS to **Clerk 
 ```bash
 1. Create app at clerk.com
 2. Get CLERK_SECRET_KEY
-3. Configure allowed domains: rideme.ink, www.rideme.ink
+3. Configure allowed domains: bib-bib.ink, www.bib-bib.ink
 ```
 
 ### 3. Configure Resend
 ```bash
 1. Create account at resend.com
 2. Get RESEND_API_KEY
-3. Add domain: rideme.ink
+3. Add domain: bib-bib.ink
 4. Configure SPF, DKIM, DMARC records in DNS
 ```
 

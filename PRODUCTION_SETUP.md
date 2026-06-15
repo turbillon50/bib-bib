@@ -1,8 +1,8 @@
-# RideMe Production Setup - rideme.ink
+# Bib-Bib Production Setup - bib-bib.ink
 
 ## Quick Start Checklist
 
-Este es tu checklist completo para llevar RideMe a producción en rideme.ink.
+Este es tu checklist completo para llevar Bib-Bib a producción en bib-bib.ink.
 
 ### 1. Obtener Credenciales de Servicios Externos
 
@@ -21,7 +21,7 @@ From Clerk:
 
 From Resend:
 ├── RESEND_API_KEY (re_...)
-├── RESEND_FROM_EMAIL (noreply@rideme.ink)
+├── RESEND_FROM_EMAIL (noreply@bib-bib.ink)
 
 From Stripe:
 ├── STRIPE_SECRET_KEY (sk_live_...)
@@ -36,7 +36,7 @@ From AWS:
 ├── AWS_ACCESS_KEY_ID (AKIA...)
 ├── AWS_SECRET_ACCESS_KEY
 ├── AWS_REGION (us-east-1)
-├── AWS_S3_BUCKET (rideme-docs)
+├── AWS_S3_BUCKET (bib-bib-docs)
 ```
 
 ### 2. Configurar DNS en Name.com
@@ -71,13 +71,13 @@ Value: [resend-cname-value]
 
 Type: TXT (DMARC - de Resend)
 Name: _dmarc
-Value: v=DMARC1; p=quarantine; rua=mailto:noreply@rideme.ink
+Value: v=DMARC1; p=quarantine; rua=mailto:noreply@bib-bib.ink
 ```
 
 ### 3. Configurar en Vercel
 
 **Frontend:**
-1. Ve a vercel.com > RideMe project
+1. Ve a vercel.com > Bib-Bib project
 2. Settings > Environment Variables
 3. Agrega estas variables:
 
@@ -89,7 +89,7 @@ NEXT_PUBLIC_CLERK_AFTER_SIGN_IN_URL=/dashboard
 NEXT_PUBLIC_CLERK_AFTER_SIGN_UP_URL=/choose-role
 NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY=pk_live_...
 NEXT_PUBLIC_GOOGLE_MAPS_API_KEY=AIza...
-NEXT_PUBLIC_API_URL=https://api.rideme.ink
+NEXT_PUBLIC_API_URL=https://api.bib-bib.ink
 ```
 
 **Backend:**
@@ -100,7 +100,7 @@ NEXT_PUBLIC_API_URL=https://api.rideme.ink
 DATABASE_URL=postgresql://...
 CLERK_SECRET_KEY=sk_live_...
 RESEND_API_KEY=re_...
-RESEND_FROM_EMAIL=noreply@rideme.ink
+RESEND_FROM_EMAIL=noreply@bib-bib.ink
 STRIPE_SECRET_KEY=sk_live_...
 STRIPE_WEBHOOK_SECRET=whsec_...
 STRIPE_MONTHLY_PRICE_ID=price_...
@@ -109,13 +109,13 @@ GOOGLE_MAPS_API_KEY=AIza...
 AWS_REGION=us-east-1
 AWS_ACCESS_KEY_ID=AKIA...
 AWS_SECRET_ACCESS_KEY=...
-AWS_S3_BUCKET=rideme-docs
+AWS_S3_BUCKET=bib-bib-docs
 REDIS_URL=redis://...
 JWT_ACCESS_SECRET=[generate: openssl rand -base64 32]
 JWT_REFRESH_SECRET=[generate: openssl rand -base64 32]
-FRONTEND_URL=https://rideme.ink
-API_URL=https://api.rideme.ink
-CORS_ORIGINS=https://rideme.ink,https://www.rideme.ink
+FRONTEND_URL=https://bib-bib.ink
+API_URL=https://api.bib-bib.ink
+CORS_ORIGINS=https://bib-bib.ink,https://www.bib-bib.ink
 NODE_ENV=production
 ```
 
@@ -123,7 +123,7 @@ NODE_ENV=production
 
 1. Ve a stripe.com > Developers > Webhooks
 2. Click "Add an endpoint"
-3. URL: `https://api.rideme.ink/api/v1/webhooks/stripe`
+3. URL: `https://api.bib-bib.ink/api/v1/webhooks/stripe`
 4. Events:
    - `payment_intent.succeeded`
    - `payment_intent.payment_failed`
@@ -158,7 +158,7 @@ git push origin main  # Vercel auto-deploys
 ### 7. Verificar en Producción
 
 1. **Clerk Sign-in:**
-   - Ve a https://rideme.ink/sign-in
+   - Ve a https://bib-bib.ink/sign-in
    - Intenta crear una cuenta
    - Verifica que recibas email
 
@@ -168,7 +168,7 @@ git push origin main  # Vercel auto-deploys
 
 3. **Dashboard Access:**
    - Después de verificar, debes ver el dashboard
-   - URL: https://rideme.ink/dashboard
+   - URL: https://bib-bib.ink/dashboard
 
 4. **Ride Creation:**
    - Intenta crear un viaje
@@ -192,8 +192,8 @@ openssl rand -base64 32  # Copia para JWT_REFRESH_SECRET
 
 ## URLs importantes
 
-- **Frontend:** https://rideme.ink
-- **API:** https://api.rideme.ink
+- **Frontend:** https://bib-bib.ink
+- **API:** https://api.bib-bib.ink
 - **Clerk:** https://dashboard.clerk.com
 - **Resend:** https://resend.com
 - **Stripe:** https://dashboard.stripe.com

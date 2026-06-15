@@ -79,7 +79,7 @@ export default function LoginPage() {
             <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-[#6C63FF] to-[#00D4AA] flex items-center justify-center shadow-[0_0_30px_rgba(108,99,255,0.4)]">
               <Car size={28} className="text-white" />
             </div>
-            <span className="text-2xl font-black tracking-tight">RideMe</span>
+            <span className="text-2xl font-black tracking-tight">Bib-Bib</span>
           </Link>
           <h1 className="text-3xl font-black mt-6 mb-2">Welcome back</h1>
           <p className="text-white/50">Sign in to your account to continue</p>

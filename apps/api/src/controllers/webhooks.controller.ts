@@ -42,7 +42,7 @@ export async function stripeWebhook(req: Request, res: Response): Promise<void> 
         if (driver && sub.status === 'past_due') {
           sendPushToUser(driver.user_id, {
             title: 'Pago de suscripción fallido',
-            body: 'Actualiza tu método de pago para seguir usando RideMe',
+            body: 'Actualiza tu método de pago para seguir usando Bib-Bib',
             data: { type: 'subscription_past_due' },
           }).catch(() => {});
         }

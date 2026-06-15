@@ -1,7 +1,7 @@
 import { Resend } from 'resend';
 import { ROLE_LABELS, type AppRole } from './invitations';
 
-// RideMe brand — morado #6C63FF sobre oscuro. SIN dorado (regla permanente).
+// Bib-Bib brand — morado #6C63FF sobre oscuro. SIN dorado (regla permanente).
 const BRAND = {
   bg: '#0A0A0F',
   card: '#111118',
@@ -11,10 +11,10 @@ const BRAND = {
 };
 
 const resend = process.env.RESEND_API_KEY ? new Resend(process.env.RESEND_API_KEY) : null;
-const FROM = process.env.RESEND_FROM_EMAIL || 'RideMe <no-reply@rideme.ink>';
+const FROM = process.env.RESEND_FROM_EMAIL || 'Bib-Bib <no-reply@bib-bib.ink>';
 
 function appUrl(): string {
-  return (process.env.FRONTEND_URL || process.env.NEXT_PUBLIC_APP_URL || 'https://rideme.ink').replace(/\/+$/, '');
+  return (process.env.FRONTEND_URL || process.env.NEXT_PUBLIC_APP_URL || 'https://bib-bib.ink').replace(/\/+$/, '');
 }
 
 function template(opts: { role: AppRole; inviter: string; link: string; label?: string | null }) {
@@ -29,13 +29,13 @@ function template(opts: { role: AppRole; inviter: string; link: string; label?: 
             <div style="width:38px;height:38px;background:${BRAND.accent};border-radius:10px;display:flex;align-items:center;justify-content:center;">
               <span style="color:#fff;font-weight:900;font-size:18px;">R</span>
             </div>
-            <div style="color:${BRAND.accent};font-weight:800;font-size:18px;letter-spacing:0.04em;">RideMe</div>
+            <div style="color:${BRAND.accent};font-weight:800;font-size:18px;letter-spacing:0.04em;">Bib-Bib</div>
           </div>
         </td></tr>
         <tr><td style="padding:40px;color:${BRAND.text};">
           <h1 style="margin:0 0 8px;font-size:22px;color:${BRAND.text};">Tienes una invitación</h1>
           <p style="margin:0 0 24px;color:${BRAND.muted};font-size:14px;line-height:1.6;">
-            <strong style="color:${BRAND.text};">${opts.inviter}</strong> te invitó a unirte a RideMe como
+            <strong style="color:${BRAND.text};">${opts.inviter}</strong> te invitó a unirte a Bib-Bib como
             <strong style="color:${BRAND.accent};">${roleLabel}</strong>${opts.label ? ` — ${opts.label}` : ''}.
           </p>
           <a href="${opts.link}" style="display:inline-block;padding:14px 30px;background:${BRAND.accent};color:#fff;border-radius:12px;text-decoration:none;font-weight:700;font-size:15px;">Aceptar invitación</a>
@@ -45,7 +45,7 @@ function template(opts: { role: AppRole; inviter: string; link: string; label?: 
         </td></tr>
         <tr><td style="padding:20px 40px;border-top:1px solid rgba(255,255,255,0.06);">
           <p style="margin:0;color:rgba(255,255,255,0.35);font-size:11px;text-align:center;">
-            © ${new Date().getFullYear()} RideMe · <a href="${appUrl()}" style="color:${BRAND.accent};text-decoration:none;">rideme.ink</a>
+            © ${new Date().getFullYear()} Bib-Bib · <a href="${appUrl()}" style="color:${BRAND.accent};text-decoration:none;">bib-bib.ink</a>
           </p>
         </td></tr>
       </table>
@@ -63,7 +63,7 @@ export async function sendInviteEmail(opts: {
     await resend.emails.send({
       from: FROM,
       to: opts.to,
-      subject: `RideMe — ${opts.inviter} te invitó como ${ROLE_LABELS[opts.role] ?? opts.role}`,
+      subject: `Bib-Bib — ${opts.inviter} te invitó como ${ROLE_LABELS[opts.role] ?? opts.role}`,
       html: template({ role: opts.role, inviter: opts.inviter, link, label: opts.label }),
     });
     return { sent: true };

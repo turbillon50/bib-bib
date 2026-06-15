@@ -126,7 +126,7 @@ export const useAuthStore = create<AuthStore>()(
       },
     }),
     {
-      name: 'rideme-auth',
+      name: 'bib-bib-auth',
       storage: createJSONStorage(() => localStorage),
       partialize: (state) => ({
         user: state.user,

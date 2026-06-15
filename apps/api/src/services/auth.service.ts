@@ -29,24 +29,24 @@ export function generateAccessToken(
 ): string {
   return jwt.sign(payload, env.JWT_ACCESS_SECRET, {
     expiresIn: env.JWT_ACCESS_EXPIRES_IN,
-    issuer: 'rideme-api',
-    audience: 'rideme-client',
+    issuer: 'bib-bib-api',
+    audience: 'bib-bib-client',
   } as jwt.SignOptions);
 }
 
 export function generateRefreshToken(userId: string): string {
   return jwt.sign({ sub: userId }, env.JWT_REFRESH_SECRET, {
     expiresIn: env.JWT_REFRESH_EXPIRES_IN,
-    issuer: 'rideme-api',
-    audience: 'rideme-client',
+    issuer: 'bib-bib-api',
+    audience: 'bib-bib-client',
   } as jwt.SignOptions);
 }
 
 export function verifyAccessToken(token: string): JwtAccessPayload {
   try {
     return jwt.verify(token, env.JWT_ACCESS_SECRET, {
-      issuer: 'rideme-api',
-      audience: 'rideme-client',
+      issuer: 'bib-bib-api',
+      audience: 'bib-bib-client',
     }) as JwtAccessPayload;
   } catch (err) {
     throw new UnauthorizedError('Invalid or expired access token');
@@ -56,8 +56,8 @@ export function verifyAccessToken(token: string): JwtAccessPayload {
 export function verifyRefreshToken(token: string): JwtPayload {
   try {
     return jwt.verify(token, env.JWT_REFRESH_SECRET, {
-      issuer: 'rideme-api',
-      audience: 'rideme-client',
+      issuer: 'bib-bib-api',
+      audience: 'bib-bib-client',
     }) as JwtPayload;
   } catch (err) {
     throw new UnauthorizedError('Invalid or expired refresh token');

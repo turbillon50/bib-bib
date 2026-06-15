@@ -12,7 +12,7 @@ export async function getPlans(_req: Request, res: Response, next: NextFunction)
     });
     res.json(success([{
       id: price.id,
-      name: (price.product as { name?: string })?.name ?? 'Plan Mensual RideMe',
+      name: (price.product as { name?: string })?.name ?? 'Plan Mensual Bib-Bib',
       amount: (price.unit_amount ?? 0) / 100,
       currency: price.currency.toUpperCase(),
       interval: price.recurring?.interval,

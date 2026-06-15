@@ -2,7 +2,7 @@
 
 ## Resumen de Cambios
 
-La refactorización de **RideMe** ha sido completada exitosamente. Se ha migrado la autenticación de Firebase a **Clerk** y las notificaciones SMS de Twilio a **emails con Resend**.
+La refactorización de **Bib-Bib** ha sido completada exitosamente. Se ha migrado la autenticación de Firebase a **Clerk** y las notificaciones SMS de Twilio a **emails con Resend**.
 
 ---
 

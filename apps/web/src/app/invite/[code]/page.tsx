@@ -37,7 +37,7 @@ export default function InvitePage({ params }: { params: { code: string } }) {
       <div className="w-full max-w-md rounded-2xl border border-white/5 bg-surface p-8">
         <div className="mb-6 flex items-center gap-3">
           <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-primary text-lg font-black text-white">R</div>
-          <span className="text-xl font-bold text-primary">RideMe</span>
+          <span className="text-xl font-bold text-primary">Bib-Bib</span>
         </div>
 
         {loading && <p className="text-muted-foreground animate-pulse">Validando invitación…</p>}
@@ -55,7 +55,7 @@ export default function InvitePage({ params }: { params: { code: string } }) {
             <h1 className="mb-2 text-xl font-bold">Tienes una invitación</h1>
             <p className="text-sm text-muted-foreground">
               {info.invitedBy ? <><strong className="text-foreground">{info.invitedBy}</strong> te invitó </> : 'Te invitaron '}
-              a unirte a RideMe como <strong className="text-primary">{info.roleLabel}</strong>
+              a unirte a Bib-Bib como <strong className="text-primary">{info.roleLabel}</strong>
               {info.label ? <> — {info.label}</> : null}.
             </p>
 

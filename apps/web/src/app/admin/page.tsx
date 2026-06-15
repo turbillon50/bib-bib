@@ -29,12 +29,12 @@ export default function AdminDashboard() {
     <div className="space-y-8">
       <div>
         <h1 className="text-2xl font-bold">Dashboard</h1>
-        <p className="text-sm text-muted-foreground">Resumen operativo de RideMe</p>
+        <p className="text-sm text-muted-foreground">Resumen operativo de Bib-Bib</p>
       </div>
 
       <div className="grid gap-3 md:grid-cols-3">
         {[
-          { src: '/brand/hero.jpg', label: 'Operaciones RideMe' },
+          { src: '/brand/hero.jpg', label: 'Operaciones Bib-Bib' },
           { src: '/brand/app.jpg', label: 'Experiencia usuario' },
           { src: '/brand/driver.jpg', label: 'Red de conductores' },
         ].map((item) => (

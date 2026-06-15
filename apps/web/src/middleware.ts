@@ -12,7 +12,7 @@ const isPublicRoute = createRouteMatcher([
 ]);
 
 const clerkHandler = clerkMiddleware((auth, req) => {
-  if (process.env.NEXT_PUBLIC_DEMO === '1' && req.cookies.get('rideme_demo')?.value === '1') return;
+  if (process.env.NEXT_PUBLIC_DEMO === '1' && req.cookies.get('bib-bib_demo')?.value === '1') return;
   if (!isPublicRoute(req)) auth().protect({ unauthenticatedUrl: new URL('/sign-in', req.url).toString() });
 });
 

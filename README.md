@@ -1,8 +1,8 @@
-# RideMe — Premium Ride-Hailing "Name Your Price"
+# Bib-Bib — Premium Ride-Hailing "Name Your Price"
 
-RideMe (rideme.ink) es una aplicación de ride-hailing donde **el pasajero pone el precio**: propone su tarifa, los conductores la ven y deciden si la aceptan. Sin tarifa dinámica, sin sorpresas. Construida por Forge Labs (Vulcano) sobre Next.js 14 + Vercel + Neon + Clerk + Google Maps + Resend.
+Bib-Bib (bib-bib.ink) es una aplicación de ride-hailing donde **el pasajero pone el precio**: propone su tarifa, los conductores la ven y deciden si la aceptan. Sin tarifa dinámica, sin sorpresas. Construida por Forge Labs (Vulcano) sobre Next.js 14 + Vercel + Neon + Clerk + Google Maps + Resend.
 
-URL producción: https://rideme.ink · Deploy Vercel: proyecto `rideme` (luis-projects-48b011f9).
+URL producción: https://bib-bib.ink · Deploy Vercel: proyecto `bib-bib` (luis-projects-48b011f9).
 
 ---
 
@@ -44,7 +44,7 @@ URL producción: https://rideme.ink · Deploy Vercel: proyecto `rideme` (luis-pr
 ## Cómo usar la demo
 
 1. Entra a la landing `/`.
-2. Botones **Ver demo** (pasajero), **Demo conductor**, **Demo admin** → fijan la cookie `rideme_demo=1` y entran sin login.
+2. Botones **Ver demo** (pasajero), **Demo conductor**, **Demo admin** → fijan la cookie `bib-bib_demo=1` y entran sin login.
 3. La ruta `/demo?to=/app|/driver|/admin` activa el modo demo a cualquier vista.
 
 ## Cómo operar el ADMIN
@@ -78,7 +78,7 @@ cd apps/web && npm run dev
 
 ## Deploy
 
-Vercel (proyecto `rideme`), build en la nube con `npm install --legacy-peer-deps`. Para forzar: `vercel deploy --prod --yes`. Si BLOCKED: `vercel --prebuilt --prod`.
+Vercel (proyecto `bib-bib`), build en la nube con `npm install --legacy-peer-deps`. Para forzar: `vercel deploy --prod --yes`. Si BLOCKED: `vercel --prebuilt --prod`.
 
 ---
 

@@ -4,7 +4,7 @@ import { ClerkProvider } from '@clerk/nextjs';
 import { Providers } from './providers';
 
 export const metadata = {
-  title: 'RideMe – Name Your Price',
+  title: 'Bib-Bib – Name Your Price',
   description: 'Premium rideshare app where you set the price. No surge. No guessing.',
 };
 
@@ -21,7 +21,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
       <head>
         <meta name="apple-mobile-web-app-capable" content="yes" />
         <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
-        <meta name="apple-mobile-web-app-title" content="RideMe" />
+        <meta name="apple-mobile-web-app-title" content="Bib-Bib" />
         <meta name="theme-color" content="#6C63FF" />
         <link rel="manifest" href="/manifest.json" />
         <link rel="icon" href="/brand/icon-192.png" />

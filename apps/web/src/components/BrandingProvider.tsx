@@ -12,7 +12,7 @@ export type BrandingConfig = {
 };
 
 const DEFAULT_BRANDING: BrandingConfig = {
-  app_name: 'RideMe',
+  app_name: 'Bib-Bib',
   primary_color: '#6C63FF',
   accent_color: '#00D4AA',
   logo_url: '/brand/hero.jpg',
@@ -31,8 +31,8 @@ function readCookie(name: string) {
 export function applyTheme(theme: 'dark' | 'light') {
   document.documentElement.classList.toggle('dark', theme === 'dark');
   document.documentElement.classList.toggle('light', theme === 'light');
-  localStorage.setItem('rideme_theme', theme);
-  document.cookie = `rideme_theme=${theme}; path=/; max-age=31536000; SameSite=Lax`;
+  localStorage.setItem('bib-bib_theme', theme);
+  document.cookie = `bib-bib_theme=${theme}; path=/; max-age=31536000; SameSite=Lax`;
 }
 
 export function applyBranding(branding: BrandingConfig) {
@@ -65,7 +65,7 @@ export function applyBranding(branding: BrandingConfig) {
 
 export function BrandingProvider({ children }: { children: ReactNode }) {
   useEffect(() => {
-    const savedTheme = localStorage.getItem('rideme_theme') || readCookie('rideme_theme');
+    const savedTheme = localStorage.getItem('bib-bib_theme') || readCookie('bib-bib_theme');
     if (savedTheme === 'light' || savedTheme === 'dark') {
       applyTheme(savedTheme);
     }
@@ -77,7 +77,7 @@ export function BrandingProvider({ children }: { children: ReactNode }) {
         if (cancelled) return;
         const branding = { ...DEFAULT_BRANDING, ...(data.branding ?? {}) } as BrandingConfig;
         applyBranding(branding);
-        const preferred = localStorage.getItem('rideme_theme') || readCookie('rideme_theme') || branding.theme;
+        const preferred = localStorage.getItem('bib-bib_theme') || readCookie('bib-bib_theme') || branding.theme;
         applyTheme(preferred === 'light' ? 'light' : 'dark');
       })
       .catch(() => {

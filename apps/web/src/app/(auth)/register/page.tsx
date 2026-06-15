@@ -53,7 +53,7 @@ function RegisterForm() {
           <div className="w-9 h-9 rounded-xl bg-gradient-to-br from-[#6C63FF] to-[#00D4AA] flex items-center justify-center">
             <MapPin size={16} className="text-white" />
           </div>
-          <span className="font-black text-2xl text-white">RideMe</span>
+          <span className="font-black text-2xl text-white">Bib-Bib</span>
         </Link>
 
         <div className="bg-[#111118] border border-[rgba(255,255,255,0.06)] rounded-3xl p-6 mb-6">

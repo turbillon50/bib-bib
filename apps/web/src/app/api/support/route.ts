@@ -58,10 +58,10 @@ async function notifyAdmin(ticket: SupportTicket) {
   await resend.emails.send({
     from: supportFromEmail(),
     to,
-    subject: 'RideMe soporte - nuevo reporte',
+    subject: 'Bib-Bib soporte - nuevo reporte',
     html: `
       <div style="font-family:Arial,sans-serif;background:#0A0A0F;color:#fff;padding:24px">
-        <h1 style="color:#6C63FF">Nuevo ticket RideMe</h1>
+        <h1 style="color:#6C63FF">Nuevo ticket Bib-Bib</h1>
         <p><strong>Usuario:</strong> ${escapeHtml(ticket.user_ref || 'anonimo')}</p>
         <p><strong>Mensaje:</strong></p>
         <p style="white-space:pre-wrap">${escapeHtml(ticket.message)}</p>
@@ -78,10 +78,10 @@ async function notifyUser(ticket: SupportTicket, reply: string, resolved: boolea
   await resend.emails.send({
     from: supportFromEmail(),
     to: ticket.user_ref,
-    subject: resolved ? 'RideMe soporte - ticket resuelto' : 'RideMe soporte - respuesta',
+    subject: resolved ? 'Bib-Bib soporte - ticket resuelto' : 'Bib-Bib soporte - respuesta',
     html: `
       <div style="font-family:Arial,sans-serif;background:#0A0A0F;color:#fff;padding:24px">
-        <h1 style="color:#6C63FF">Soporte RideMe</h1>
+        <h1 style="color:#6C63FF">Soporte Bib-Bib</h1>
         <p>Tenemos una actualizacion sobre tu reporte.</p>
         ${reply ? `<p style="white-space:pre-wrap">${escapeHtml(reply)}</p>` : ''}
         <p style="color:rgba(255,255,255,.55)">Estado: ${escapeHtml(ticket.status)}</p>
@@ -100,7 +100,7 @@ export async function POST(req: NextRequest) {
 
     const ticket: SupportTicket = {
       id: crypto.randomUUID(),
-      project: 'rideme',
+      project: 'bib-bib',
       user_ref: body.userRef?.trim().slice(0, 255) || 'anonymous',
       message: message.slice(0, 4000),
       screenshot: body.screenshot?.trim().slice(0, 1000) || null,
@@ -140,7 +140,7 @@ export async function GET() {
        WHERE project = $1
        ORDER BY ts DESC
        LIMIT 100`,
-      ['rideme']
+      ['bib-bib']
     )) as SupportTicket[];
 
     return NextResponse.json({ tickets: rows });
@@ -169,7 +169,7 @@ export async function PATCH(req: NextRequest) {
        SET status = $2, response = COALESCE($3, response)
        WHERE project = $1 AND id = $4
        RETURNING id, project, user_ref, message, screenshot, response, ts, status`,
-      ['rideme', status, response, body.id]
+      ['bib-bib', status, response, body.id]
     )) as SupportTicket[];
 
     if (!rows.length) return NextResponse.json({ error: 'Ticket no encontrado' }, { status: 404 });

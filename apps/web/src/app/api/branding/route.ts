@@ -16,8 +16,8 @@ type Branding = {
 };
 
 const DEFAULT_BRANDING: Branding = {
-  project: 'rideme',
-  app_name: 'RideMe',
+  project: 'bib-bib',
+  app_name: 'Bib-Bib',
   primary_color: '#6C63FF',
   accent_color: '#00D4AA',
   logo_url: '/brand/hero.jpg',
@@ -62,7 +62,7 @@ export async function GET() {
       `SELECT project, app_name, primary_color, accent_color, logo_url, icon_url, theme, updated_at
        FROM app_branding
        WHERE project = $1`,
-      ['rideme']
+      ['bib-bib']
     )) as Branding[];
 
     return NextResponse.json({ branding: rows[0] ?? DEFAULT_BRANDING });
@@ -79,7 +79,7 @@ export async function PUT(req: NextRequest) {
   try {
     const body = await req.json();
     const nextBranding: Branding = {
-      project: 'rideme',
+      project: 'bib-bib',
       app_name: typeof body.app_name === 'string' && body.app_name.trim() ? body.app_name.trim().slice(0, 80) : DEFAULT_BRANDING.app_name,
       primary_color: validColor(body.primary_color, DEFAULT_BRANDING.primary_color),
       accent_color: validColor(body.accent_color, DEFAULT_BRANDING.accent_color),

@@ -58,7 +58,7 @@ export default function PassengerMapPage() {
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-2 bg-[rgba(17,17,24,0.9)] backdrop-blur-xl rounded-2xl px-3 py-2 border border-[rgba(255,255,255,0.08)]">
               <img src="/brand/app.jpg" alt="" className="h-7 w-7 rounded-lg object-cover" />
-              <span className="font-bold text-sm">RideMe</span>
+              <span className="font-bold text-sm">Bib-Bib</span>
             </div>
             <button
               onClick={() => router.push('/app/schedule')}

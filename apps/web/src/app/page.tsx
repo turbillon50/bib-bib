@@ -110,7 +110,7 @@ export default function LandingPage() {
             <div className="w-8 h-8 rounded-xl bg-gradient-to-br from-[#6C63FF] to-[#00D4AA] flex items-center justify-center">
               <Car size={16} className="text-white" />
             </div>
-            <span className="text-xl font-black tracking-tight">RideMe</span>
+            <span className="text-xl font-black tracking-tight">Bib-Bib</span>
           </div>
           <div className="hidden md:flex items-center gap-8 text-sm text-white/60">
             <a href="#features" className="hover:text-white transition-colors">Features</a>
@@ -166,7 +166,7 @@ export default function LandingPage() {
             transition={{ duration: 0.7, delay: 0.1 }}
             className="mb-6 text-5xl font-black leading-[0.95] tracking-tight text-white sm:text-7xl lg:text-8xl"
           >
-            RideMe
+            Bib-Bib
           </motion.h1>
 
           {/* Subheadline */}
@@ -291,7 +291,7 @@ export default function LandingPage() {
           className="text-center mb-16"
         >
           <motion.div variants={itemVariants} className="text-[#6C63FF] text-sm font-semibold uppercase tracking-widest mb-4">
-            Why RideMe
+            Why Bib-Bib
           </motion.div>
           <motion.h2 variants={itemVariants} className="text-4xl sm:text-5xl font-black mb-4">
             Rides on your terms
@@ -396,7 +396,7 @@ export default function LandingPage() {
             viewport={{ once: true }}
             className="overflow-hidden rounded-3xl border border-white/10 bg-surface"
           >
-            <img src="/brand/app.jpg" alt="RideMe passenger app" className="h-72 w-full object-cover sm:h-96" />
+            <img src="/brand/app.jpg" alt="Bib-Bib passenger app" className="h-72 w-full object-cover sm:h-96" />
             <div className="p-6">
               <h2 className="text-2xl font-black">Passenger control, premium flow</h2>
               <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
@@ -415,7 +415,7 @@ export default function LandingPage() {
             transition={{ delay: 0.1 }}
             className="overflow-hidden rounded-3xl border border-white/10 bg-surface"
           >
-            <img src="/brand/driver.jpg" alt="RideMe driver experience" className="h-72 w-full object-cover sm:h-96" />
+            <img src="/brand/driver.jpg" alt="Bib-Bib driver experience" className="h-72 w-full object-cover sm:h-96" />
             <div className="p-6">
               <h2 className="text-2xl font-black">Drivers choose the work that pays</h2>
               <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
@@ -527,10 +527,10 @@ export default function LandingPage() {
             <div className="w-7 h-7 rounded-lg bg-gradient-to-br from-[#6C63FF] to-[#00D4AA] flex items-center justify-center">
               <Car size={13} className="text-white" />
             </div>
-            <span className="font-black text-lg">RideMe</span>
+            <span className="font-black text-lg">Bib-Bib</span>
           </div>
           <div className="text-white/30 text-sm">
-            © 2026 RideMe. All rights reserved.
+            © 2026 Bib-Bib. All rights reserved.
           </div>
           <div className="flex items-center gap-6 text-sm text-white/40">
             <a href="#" className="hover:text-white transition-colors">Privacy</a>
