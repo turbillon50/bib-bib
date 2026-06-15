@@ -20,39 +20,39 @@ import { ThemeToggle } from '@/components/ThemeToggle';
 const FEATURES = [
   {
     icon: DollarSign,
-    title: 'Name Your Price',
+    title: 'Tú pones el precio',
     description:
-      'Set your own fare. No surge pricing, no guessing. Drivers see your offer and decide.',
+      'Sin precios inflados. Tú propones, el repartidor acepta. Así de simple.',
     color: '#6C63FF',
   },
   {
     icon: Shield,
-    title: 'Safety First',
+    title: 'Tu seguridad primero',
     description:
-      'All drivers verified, background-checked, and rated. Your safety is our priority.',
+      'Todos los repartidores verificados y calificados. Tu seguridad es lo más importante.',
     color: '#00D4AA',
   },
   {
     icon: Zap,
-    title: 'Lightning Fast',
+    title: 'Ultra rápido',
     description:
-      'Matches in under 30 seconds. Real-time tracking from pickup to drop-off.',
+      'Conexión en menos de 30 segundos. Sigue tu mandado en tiempo real.',
     color: '#F59E0B',
   },
   {
     icon: Clock,
-    title: 'Schedule Rides',
+    title: 'Programa tu mandado',
     description:
-      'Plan ahead. Schedule rides up to 7 days in advance at your preferred price.',
+      'Planea con anticipación. Agenda hasta 7 días antes al precio que quieras.',
     color: '#EF4444',
   },
 ];
 
 const STATS = [
-  { value: '2M+', label: 'Happy Riders' },
-  { value: '50K+', label: 'Active Drivers' },
-  { value: '98%', label: 'Satisfaction Rate' },
-  { value: '30s', label: 'Avg Match Time' },
+  { value: '2M+', label: 'Clientes satisfechos' },
+  { value: '50K+', label: 'Repartidores activos' },
+  { value: '98%', label: 'Tasa de satisfacción' },
+  { value: '30s', label: 'Tiempo promedio' },
 ];
 
 const TESTIMONIALS = [
@@ -129,7 +129,7 @@ export default function LandingPage() {
               href="/register"
               className="btn-gradient text-sm px-5 py-2 rounded-xl font-semibold"
             >
-              Get Started
+              Empieza ahora
             </Link>
           </div>
         </div>
@@ -202,7 +202,7 @@ export default function LandingPage() {
               href="/register?role=driver"
               className="flex items-center gap-2 px-8 py-4 rounded-2xl text-lg font-semibold border border-white/10 hover:border-white/20 hover:bg-white/5 transition-all w-full sm:w-auto justify-center text-white"
             >
-              <Car size={20} /> Become a Driver
+              <Car size={20} /> Ser repartidor
             </Link>
           </motion.div>
 
@@ -355,7 +355,7 @@ export default function LandingPage() {
               },
               {
                 step: '02',
-                title: 'Name Your Price',
+                title: 'Tú pones el precio',
                 desc: 'Slide to propose your fare. See how competitive your price is in real-time.',
               },
               {
@@ -506,7 +506,7 @@ export default function LandingPage() {
                   href="/register"
                   className="btn-gradient flex items-center gap-2 px-8 py-4 rounded-2xl text-lg font-semibold justify-center"
                 >
-                  Get Started Free <ArrowRight size={20} />
+                  Empieza ahora Free <ArrowRight size={20} />
                 </Link>
                 <Link
                   href="/demo?to=/admin"

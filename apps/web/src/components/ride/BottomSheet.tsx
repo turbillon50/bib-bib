@@ -53,7 +53,7 @@ export function BottomSheet({ nearbyDriversCount = 0 }: BottomSheetProps) {
         proposedPrice: price,
         paymentMethod,
         vehicleType,
-        isScheduled: false,
+        isProgramard: false,
       })
       const { setActiveRide } = useTripStore.getState()
       setActiveRide(res.data?.data?.ride)

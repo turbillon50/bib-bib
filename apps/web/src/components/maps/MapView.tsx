@@ -22,16 +22,24 @@ interface MapViewProps {
   className?: string;
 }
 
-const DARK_MAP_STYLE: google.maps.MapTypeStyle[] = [
-  { elementType: 'geometry', stylers: [{ color: '#0A0A0F' }] },
-  { elementType: 'labels.text.stroke', stylers: [{ color: '#0A0A0F' }] },
-  { elementType: 'labels.text.fill', stylers: [{ color: '#4A4A5A' }] },
-  { featureType: 'road', elementType: 'geometry', stylers: [{ color: '#1A1A24' }] },
-  { featureType: 'road', elementType: 'geometry.stroke', stylers: [{ color: '#111118' }] },
-  { featureType: 'road.highway', elementType: 'geometry', stylers: [{ color: '#24243A' }] },
-  { featureType: 'water', elementType: 'geometry', stylers: [{ color: '#06060D' }] },
+// Estilo DOPAMINA — Bib-Bib naranja/vino, calles brillantes
+const BIB_BIB_MAP_STYLE: google.maps.MapTypeStyle[] = [
+  { elementType: 'geometry', stylers: [{ color: '#1a0800' }] },
+  { elementType: 'labels.text.stroke', stylers: [{ color: '#1a0800' }] },
+  { elementType: 'labels.text.fill', stylers: [{ color: '#f4a100' }] },
+  { featureType: 'road', elementType: 'geometry', stylers: [{ color: '#2d1000' }] },
+  { featureType: 'road', elementType: 'geometry.stroke', stylers: [{ color: '#3d1500' }] },
+  { featureType: 'road.highway', elementType: 'geometry', stylers: [{ color: '#6b2200' }] },
+  { featureType: 'road.highway', elementType: 'geometry.stroke', stylers: [{ color: '#e85d04' }] },
+  { featureType: 'road.arterial', elementType: 'geometry', stylers: [{ color: '#3d1500' }] },
+  { featureType: 'water', elementType: 'geometry', stylers: [{ color: '#0d0500' }] },
+  { featureType: 'water', elementType: 'labels.text.fill', stylers: [{ color: '#e85d04' }] },
   { featureType: 'poi', stylers: [{ visibility: 'off' }] },
   { featureType: 'transit', stylers: [{ visibility: 'off' }] },
+  { featureType: 'administrative', elementType: 'geometry', stylers: [{ color: '#6b1a1a' }] },
+  { featureType: 'administrative.country', elementType: 'labels.text.fill', stylers: [{ color: '#f4a100' }] },
+  { featureType: 'administrative.locality', elementType: 'labels.text.fill', stylers: [{ color: '#f4a100' }] },
+  { featureType: 'landscape', elementType: 'geometry', stylers: [{ color: '#1a0800' }] },
 ];
 
 let loader: Loader | null = null;
@@ -47,7 +55,7 @@ function getLoader() {
 }
 
 export function MapView({
-  center = { lat: 19.4326, lng: -99.1332 },
+  center = { lat: 21.1619, lng: -86.8515 }, // Cancun por defecto
   zoom = 14,
   drivers = [],
   userLocation,
@@ -70,7 +78,7 @@ export function MapView({
       if (!mapRef.current || mapInstance.current) return;
       mapInstance.current = new google.maps.Map(mapRef.current, {
         center, zoom,
-        styles: DARK_MAP_STYLE,
+        styles: BIB_BIB_MAP_STYLE,
         disableDefaultUI: true,
         zoomControl: true,
         zoomControlOptions: { position: google.maps.ControlPosition.RIGHT_CENTER },
@@ -84,18 +92,17 @@ export function MapView({
       routeRenderer.current = new google.maps.DirectionsRenderer({
         map: mapInstance.current,
         suppressMarkers: true,
-        polylineOptions: { strokeColor: '#6C63FF', strokeWeight: 4, strokeOpacity: 0.9 },
+        polylineOptions: { strokeColor: '#e85d04', strokeWeight: 5, strokeOpacity: 0.95 },
       });
       setLoaded(true);
     });
   }, []);
 
-  // Update center
   useEffect(() => {
     if (mapInstance.current) mapInstance.current.setCenter(center);
   }, [center.lat, center.lng]);
 
-  // User location marker
+  // Marcador usuario — punto naranja brillante
   useEffect(() => {
     if (!loaded || !mapInstance.current) return;
     const pos = userLocation || center;
@@ -105,8 +112,8 @@ export function MapView({
         map: mapInstance.current,
         icon: {
           path: google.maps.SymbolPath.CIRCLE,
-          scale: 10,
-          fillColor: '#6C63FF',
+          scale: 12,
+          fillColor: '#e85d04',
           fillOpacity: 1,
           strokeColor: '#ffffff',
           strokeWeight: 3,
@@ -118,7 +125,7 @@ export function MapView({
     }
   }, [loaded, userLocation?.lat, userLocation?.lng]);
 
-  // Driver tracking marker
+  // Marcador repartidor activo — flecha naranja
   useEffect(() => {
     if (!loaded || !mapInstance.current || !driverLocation) return;
     if (!driverTrackMarker.current) {
@@ -126,13 +133,13 @@ export function MapView({
         position: driverLocation,
         map: mapInstance.current,
         icon: {
-          path: 'M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z',
-          fillColor: '#00D4AA',
+          path: google.maps.SymbolPath.FORWARD_CLOSED_ARROW,
+          scale: 7,
+          fillColor: '#f4a100',
           fillOpacity: 1,
           strokeColor: '#ffffff',
           strokeWeight: 2,
-          scale: 1.5,
-          anchor: new google.maps.Point(12, 22),
+          rotation: 0,
         },
         zIndex: 200,
       });
@@ -142,18 +149,13 @@ export function MapView({
     mapInstance.current.panTo(driverLocation);
   }, [loaded, driverLocation?.lat, driverLocation?.lng]);
 
-  // Nearby driver markers
+  // Repartidores cercanos — flechas pequeñas naranja
   useEffect(() => {
     if (!loaded || !mapInstance.current) return;
-
     const currentIds = new Set(drivers.map(d => d.id));
-
-    // Remove stale markers
     driverMarkers.current.forEach((marker, id) => {
       if (!currentIds.has(id)) { marker.setMap(null); driverMarkers.current.delete(id); }
     });
-
-    // Add/update markers
     drivers.forEach(d => {
       const pos = { lat: d.latitude, lng: d.longitude };
       if (driverMarkers.current.has(d.id)) {
@@ -165,9 +167,9 @@ export function MapView({
           icon: {
             path: google.maps.SymbolPath.FORWARD_CLOSED_ARROW,
             scale: 5,
-            fillColor: '#00D4AA',
-            fillOpacity: 0.9,
-            strokeColor: '#ffffff',
+            fillColor: '#e85d04',
+            fillOpacity: 0.95,
+            strokeColor: '#f4a100',
             strokeWeight: 1.5,
             rotation: d.heading ?? 0,
           },
@@ -177,7 +179,7 @@ export function MapView({
     });
   }, [loaded, drivers]);
 
-  // Show route
+  // Ruta entre origen y destino
   useEffect(() => {
     if (!loaded || !routeRenderer.current || !origin || !destination) return;
     const directionsService = new google.maps.DirectionsService();
@@ -192,8 +194,8 @@ export function MapView({
   return (
     <div className={className} ref={mapRef}>
       {!loaded && (
-        <div className="w-full h-full bg-[#0A0A0F] flex items-center justify-center">
-          <div className="w-8 h-8 border-2 border-[rgba(108,99,255,0.3)] border-t-[#6C63FF] rounded-full animate-spin" />
+        <div className="w-full h-full bg-[#1a0800] flex items-center justify-center">
+          <div className="w-8 h-8 border-2 border-[rgba(232,93,4,0.3)] border-t-[#e85d04] rounded-full animate-spin" />
         </div>
       )}
     </div>
