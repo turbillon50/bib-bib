@@ -61,11 +61,11 @@ async function notifyAdmin(ticket: SupportTicket) {
     subject: 'Bib-Bib soporte - nuevo reporte',
     html: `
       <div style="font-family:Arial,sans-serif;background:#0A0A0F;color:#fff;padding:24px">
-        <h1 style="color:#6C63FF">Nuevo ticket Bib-Bib</h1>
+        <h1 style="color:#e85d04">Nuevo ticket Bib-Bib</h1>
         <p><strong>Usuario:</strong> ${escapeHtml(ticket.user_ref || 'anonimo')}</p>
         <p><strong>Mensaje:</strong></p>
         <p style="white-space:pre-wrap">${escapeHtml(ticket.message)}</p>
-        ${ticket.screenshot ? `<p><strong>Screenshot:</strong> <a style="color:#00D4AA" href="${escapeHtml(ticket.screenshot)}">${escapeHtml(ticket.screenshot)}</a></p>` : ''}
+        ${ticket.screenshot ? `<p><strong>Screenshot:</strong> <a style="color:#f4a100" href="${escapeHtml(ticket.screenshot)}">${escapeHtml(ticket.screenshot)}</a></p>` : ''}
       </div>
     `,
   });
@@ -81,7 +81,7 @@ async function notifyUser(ticket: SupportTicket, reply: string, resolved: boolea
     subject: resolved ? 'Bib-Bib soporte - ticket resuelto' : 'Bib-Bib soporte - respuesta',
     html: `
       <div style="font-family:Arial,sans-serif;background:#0A0A0F;color:#fff;padding:24px">
-        <h1 style="color:#6C63FF">Soporte Bib-Bib</h1>
+        <h1 style="color:#e85d04">Soporte Bib-Bib</h1>
         <p>Tenemos una actualizacion sobre tu reporte.</p>
         ${reply ? `<p style="white-space:pre-wrap">${escapeHtml(reply)}</p>` : ''}
         <p style="color:rgba(255,255,255,.55)">Estado: ${escapeHtml(ticket.status)}</p>

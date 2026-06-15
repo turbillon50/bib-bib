@@ -6,8 +6,8 @@ import { inputCls } from '@/components/admin/ui';
 
 const DEFAULT_BRANDING: BrandingConfig = {
   app_name: 'Bib-Bib',
-  primary_color: '#6C63FF',
-  accent_color: '#00D4AA',
+  primary_color: '#e85d04',
+  accent_color: '#f4a100',
   logo_url: '/brand/hero.jpg',
   icon_url: '/brand/icon-192.png',
   theme: 'dark',

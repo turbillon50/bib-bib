@@ -1,11 +1,11 @@
 import { Resend } from 'resend';
 import { ROLE_LABELS, type AppRole } from './invitations';
 
-// Bib-Bib brand — morado #6C63FF sobre oscuro. SIN dorado (regla permanente).
+// Bib-Bib brand — morado #e85d04 sobre oscuro. SIN dorado (regla permanente).
 const BRAND = {
   bg: '#0A0A0F',
   card: '#111118',
-  accent: '#6C63FF',
+  accent: '#e85d04',
   text: '#FFFFFF',
   muted: 'rgba(255,255,255,0.55)',
 };

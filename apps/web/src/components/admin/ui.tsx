@@ -20,7 +20,7 @@ const STATUS_STYLES: Record<string, string> = {
   arrived: 'bg-sky-500/15 text-sky-400',
   searching: 'bg-amber-500/15 text-amber-400',
   negotiating: 'bg-amber-500/15 text-amber-400',
-  scheduled: 'bg-violet-500/15 text-violet-400',
+  scheduled: 'bg-orange-500/15 text-orange-400',
   canceled: 'bg-rose-500/15 text-rose-400',
   expired: 'bg-zinc-500/15 text-zinc-400',
   approved: 'bg-emerald-500/15 text-emerald-400',

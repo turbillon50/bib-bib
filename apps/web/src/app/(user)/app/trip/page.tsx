@@ -21,10 +21,10 @@ const statusMessages: Record<TripStatus, string> = {
 };
 
 const statusColors: Record<TripStatus, string> = {
-  accepted: '#6C63FF',
-  driver_en_route: '#6C63FF',
+  accepted: '#e85d04',
+  driver_en_route: '#e85d04',
   arrived: '#FFA502',
-  in_progress: '#00D4AA',
+  in_progress: '#f4a100',
   completed: '#2ED573',
 };
 
@@ -79,7 +79,7 @@ export default function TripTrackingPage() {
 
   if (!activeRide) return null;
 
-  const color = statusColors[status] ?? '#6C63FF';
+  const color = statusColors[status] ?? '#e85d04';
 
   return (
     <div className="flex min-h-screen flex-col overflow-x-hidden bg-background md:pl-20">
@@ -117,7 +117,7 @@ export default function TripTrackingPage() {
 
         {/* Driver info */}
         <div className="flex items-center gap-4 mb-4">
-          <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-[#6C63FF] to-[#00D4AA] flex items-center justify-center text-white font-bold text-xl flex-shrink-0">
+          <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-[#e85d04] to-[#f4a100] flex items-center justify-center text-white font-bold text-xl flex-shrink-0">
             {activeRide.driver_name?.[0] ?? 'C'}
           </div>
           <div className="flex-1">
@@ -131,20 +131,20 @@ export default function TripTrackingPage() {
             <div className="text-xs text-[#4A4A5A] mt-0.5">{activeRide.plate_number}</div>
           </div>
           <div className="flex gap-2">
-            <button className="w-11 h-11 rounded-xl bg-[#1A1A24] flex items-center justify-center border border-[rgba(255,255,255,0.08)] hover:border-[rgba(108,99,255,0.3)] transition-colors">
-              <Phone size={18} className="text-[#6C63FF]" />
+            <button className="w-11 h-11 rounded-xl bg-[#1A1A24] flex items-center justify-center border border-[rgba(255,255,255,0.08)] hover:border-[rgba(232,93,4,0.3)] transition-colors">
+              <Phone size={18} className="text-[#e85d04]" />
             </button>
-            <button className="w-11 h-11 rounded-xl bg-[#1A1A24] flex items-center justify-center border border-[rgba(255,255,255,0.08)] hover:border-[rgba(108,99,255,0.3)] transition-colors">
-              <MessageCircle size={18} className="text-[#6C63FF]" />
+            <button className="w-11 h-11 rounded-xl bg-[#1A1A24] flex items-center justify-center border border-[rgba(255,255,255,0.08)] hover:border-[rgba(232,93,4,0.3)] transition-colors">
+              <MessageCircle size={18} className="text-[#e85d04]" />
             </button>
           </div>
         </div>
 
         {/* Destination */}
         <div className="flex items-center gap-3 bg-[#1A1A24] rounded-xl px-4 py-3">
-          <MapPin size={15} className="text-[#00D4AA]" />
+          <MapPin size={15} className="text-[#f4a100]" />
           <span className="text-sm text-[#8B8B9E] truncate">{activeRide.destination_address}</span>
-          <div className="ml-auto font-mono font-bold text-[#6C63FF]">${activeRide.final_price}</div>
+          <div className="ml-auto font-mono font-bold text-[#e85d04]">${activeRide.final_price}</div>
         </div>
       </motion.div>
 
@@ -173,7 +173,7 @@ export default function TripTrackingPage() {
                 ))}
               </div>
 
-              <button onClick={handleRate} className="w-full py-3.5 rounded-2xl bg-gradient-to-r from-[#6C63FF] to-[#00D4AA] font-bold">
+              <button onClick={handleRate} className="w-full py-3.5 rounded-2xl bg-gradient-to-r from-[#e85d04] to-[#f4a100] font-bold">
                 Enviar calificación
               </button>
             </motion.div>

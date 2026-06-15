@@ -13,10 +13,10 @@ import { api } from '@/lib/api';
 type DriverTripStatus = 'accepted' | 'en_route' | 'arrived' | 'in_progress';
 
 const statusConfig: Record<DriverTripStatus, { label: string; color: string; action: string }> = {
-  accepted: { label: 'Ve a recoger al pasajero', color: '#6C63FF', action: 'Llegué al origen' },
-  en_route: { label: 'En camino al pasajero', color: '#6C63FF', action: 'Llegué al origen' },
+  accepted: { label: 'Ve a recoger al pasajero', color: '#e85d04', action: 'Llegué al origen' },
+  en_route: { label: 'En camino al pasajero', color: '#e85d04', action: 'Llegué al origen' },
   arrived: { label: 'Esperando al pasajero', color: '#FFA502', action: 'Iniciar viaje' },
-  in_progress: { label: 'Viaje en progreso', color: '#00D4AA', action: 'Completar viaje' },
+  in_progress: { label: 'Viaje en progreso', color: '#f4a100', action: 'Completar viaje' },
 };
 
 export default function DriverTripPage() {
@@ -108,7 +108,7 @@ export default function DriverTripPage() {
 
         {/* Passenger info */}
         <div className="flex items-center gap-4 mb-4">
-          <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-[#00D4AA] to-[#6C63FF] flex items-center justify-center text-white font-bold text-xl flex-shrink-0">
+          <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-[#f4a100] to-[#e85d04] flex items-center justify-center text-white font-bold text-xl flex-shrink-0">
             {activeRide.passenger_name?.[0]?.toUpperCase() ?? 'P'}
           </div>
           <div className="flex-1">
@@ -118,11 +118,11 @@ export default function DriverTripPage() {
             </div>
           </div>
           <div className="flex gap-2">
-            <button className="w-11 h-11 rounded-xl bg-[#1A1A24] flex items-center justify-center border border-[rgba(255,255,255,0.08)] hover:border-[rgba(0,212,170,0.3)] transition-colors">
-              <Phone size={18} className="text-[#00D4AA]" />
+            <button className="w-11 h-11 rounded-xl bg-[#1A1A24] flex items-center justify-center border border-[rgba(255,255,255,0.08)] hover:border-[rgba(244,161,0,0.3)] transition-colors">
+              <Phone size={18} className="text-[#f4a100]" />
             </button>
-            <button className="w-11 h-11 rounded-xl bg-[#1A1A24] flex items-center justify-center border border-[rgba(255,255,255,0.08)] hover:border-[rgba(0,212,170,0.3)] transition-colors">
-              <MessageCircle size={18} className="text-[#00D4AA]" />
+            <button className="w-11 h-11 rounded-xl bg-[#1A1A24] flex items-center justify-center border border-[rgba(255,255,255,0.08)] hover:border-[rgba(244,161,0,0.3)] transition-colors">
+              <MessageCircle size={18} className="text-[#f4a100]" />
             </button>
           </div>
         </div>
@@ -130,13 +130,13 @@ export default function DriverTripPage() {
         {/* Route */}
         <div className="space-y-2 mb-4">
           <div className="flex items-center gap-3 bg-[#1A1A24] rounded-xl px-4 py-3">
-            <MapPin size={14} className="text-[#6C63FF] flex-shrink-0" />
+            <MapPin size={14} className="text-[#e85d04] flex-shrink-0" />
             <span className="text-sm text-[#8B8B9E] truncate flex-1">{activeRide.origin_address}</span>
           </div>
           <div className="flex items-center gap-3 bg-[#1A1A24] rounded-xl px-4 py-3">
-            <Flag size={14} className="text-[#00D4AA] flex-shrink-0" />
+            <Flag size={14} className="text-[#f4a100] flex-shrink-0" />
             <span className="text-sm text-[#8B8B9E] truncate flex-1">{activeRide.destination_address}</span>
-            <div className="ml-auto font-mono font-bold text-[#6C63FF]">${activeRide.final_price}</div>
+            <div className="ml-auto font-mono font-bold text-[#e85d04]">${activeRide.final_price}</div>
           </div>
         </div>
 
@@ -147,8 +147,8 @@ export default function DriverTripPage() {
           className="w-full py-4 rounded-2xl font-bold flex items-center justify-center gap-2 disabled:opacity-50 transition-all"
           style={{
             background: status === 'in_progress'
-              ? 'linear-gradient(135deg, #2ED573, #00D4AA)'
-              : 'linear-gradient(135deg, #6C63FF, #00D4AA)',
+              ? 'linear-gradient(135deg, #2ED573, #f4a100)'
+              : 'linear-gradient(135deg, #e85d04, #f4a100)',
           }}
         >
           {loading ? (

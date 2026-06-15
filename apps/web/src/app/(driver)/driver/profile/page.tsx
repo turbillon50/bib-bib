@@ -89,7 +89,7 @@ export default function DriverProfilePage() {
               animate={{ opacity: 1, scale: 1 }}
               className="flex flex-col items-center"
             >
-              <div className="w-20 h-20 rounded-3xl bg-gradient-to-br from-[#6C63FF] to-[#00D4AA] flex items-center justify-center text-white font-black text-3xl mb-3 relative">
+              <div className="w-20 h-20 rounded-3xl bg-gradient-to-br from-[#e85d04] to-[#f4a100] flex items-center justify-center text-white font-black text-3xl mb-3 relative">
                 {profile?.name?.[0]?.toUpperCase() ?? 'C'}
                 {profile?.is_verified && (
                   <div className="absolute -bottom-1 -right-1 w-6 h-6 rounded-full bg-[#2ED573] flex items-center justify-center border-2 border-[#0A0A0F]">
@@ -100,12 +100,12 @@ export default function DriverProfilePage() {
               <div className="font-bold text-lg">{profile?.name}</div>
               <div className="flex items-center gap-4 mt-2">
                 <div className="text-center">
-                  <div className="font-mono font-black text-[#6C63FF]">{profile?.rating?.toFixed(1) ?? '5.0'}</div>
+                  <div className="font-mono font-black text-[#e85d04]">{profile?.rating?.toFixed(1) ?? '5.0'}</div>
                   <div className="text-xs text-[#8B8B9E]">Rating</div>
                 </div>
                 <div className="w-px h-8 bg-[rgba(255,255,255,0.06)]" />
                 <div className="text-center">
-                  <div className="font-mono font-black text-[#00D4AA]">{profile?.total_trips ?? 0}</div>
+                  <div className="font-mono font-black text-[#f4a100]">{profile?.total_trips ?? 0}</div>
                   <div className="text-xs text-[#8B8B9E]">Viajes</div>
                 </div>
               </div>
@@ -141,7 +141,7 @@ export default function DriverProfilePage() {
               className="bg-[#111118] border border-[rgba(255,255,255,0.06)] rounded-2xl overflow-hidden"
             >
               <div className="flex items-center gap-2 px-4 py-3 border-b border-[rgba(255,255,255,0.04)]">
-                <Car size={14} className="text-[#6C63FF]" />
+                <Car size={14} className="text-[#e85d04]" />
                 <p className="text-xs font-semibold text-[#8B8B9E] uppercase tracking-wider">Vehículo</p>
               </div>
               <div className="px-4 py-3 grid grid-cols-2 gap-x-4 gap-y-3 border-b border-[rgba(255,255,255,0.04)]">
@@ -161,7 +161,7 @@ export default function DriverProfilePage() {
                     type="text"
                     value={form.vehicle_color}
                     onChange={e => setForm(f => ({ ...f, vehicle_color: e.target.value }))}
-                    className="w-full bg-[#1A1A24] border border-[rgba(255,255,255,0.06)] rounded-xl px-3 py-2 text-sm outline-none focus:border-[rgba(108,99,255,0.4)]"
+                    className="w-full bg-[#1A1A24] border border-[rgba(255,255,255,0.06)] rounded-xl px-3 py-2 text-sm outline-none focus:border-[rgba(232,93,4,0.4)]"
                   />
                 </div>
                 <div>
@@ -170,7 +170,7 @@ export default function DriverProfilePage() {
                     type="text"
                     value={form.plate_number}
                     onChange={e => setForm(f => ({ ...f, plate_number: e.target.value.toUpperCase() }))}
-                    className="w-full bg-[#1A1A24] border border-[rgba(255,255,255,0.06)] rounded-xl px-3 py-2 text-sm outline-none focus:border-[rgba(108,99,255,0.4)] font-mono tracking-widest"
+                    className="w-full bg-[#1A1A24] border border-[rgba(255,255,255,0.06)] rounded-xl px-3 py-2 text-sm outline-none focus:border-[rgba(232,93,4,0.4)] font-mono tracking-widest"
                   />
                 </div>
               </div>
@@ -182,7 +182,7 @@ export default function DriverProfilePage() {
               transition={{ delay: 0.18 }}
               onClick={handleSave}
               disabled={saving}
-              className="w-full py-3 rounded-2xl bg-gradient-to-r from-[#6C63FF] to-[#00D4AA] font-bold text-sm disabled:opacity-50 flex items-center justify-center gap-2"
+              className="w-full py-3 rounded-2xl bg-gradient-to-r from-[#e85d04] to-[#f4a100] font-bold text-sm disabled:opacity-50 flex items-center justify-center gap-2"
             >
               {saving ? (
                 <div className="w-4 h-4 border-2 border-white/30 border-t-white rounded-full animate-spin" />
@@ -201,7 +201,7 @@ export default function DriverProfilePage() {
               className="bg-[#111118] border border-[rgba(255,255,255,0.06)] rounded-2xl overflow-hidden"
             >
               <div className="flex items-center gap-2 px-4 py-3 border-b border-[rgba(255,255,255,0.04)]">
-                <FileText size={14} className="text-[#00D4AA]" />
+                <FileText size={14} className="text-[#f4a100]" />
                 <p className="text-xs font-semibold text-[#8B8B9E] uppercase tracking-wider">Documentos</p>
               </div>
               {docItems.map((doc, i) => (
@@ -212,7 +212,7 @@ export default function DriverProfilePage() {
                       <Check size={11} /> Subido
                     </div>
                   </div>
-                  <button className="flex items-center gap-1.5 text-xs text-[#6C63FF] bg-[rgba(108,99,255,0.1)] rounded-xl px-3 py-1.5">
+                  <button className="flex items-center gap-1.5 text-xs text-[#e85d04] bg-[rgba(232,93,4,0.1)] rounded-xl px-3 py-1.5">
                     <Upload size={12} /> Actualizar
                   </button>
                 </div>

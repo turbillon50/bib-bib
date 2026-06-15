@@ -88,7 +88,7 @@ export default function ProfilePage() {
           animate={{ opacity: 1, scale: 1 }}
           className="flex flex-col items-center"
         >
-          <div className="w-20 h-20 rounded-3xl bg-gradient-to-br from-[#6C63FF] to-[#00D4AA] flex items-center justify-center text-white font-black text-3xl mb-3">
+          <div className="w-20 h-20 rounded-3xl bg-gradient-to-br from-[#e85d04] to-[#f4a100] flex items-center justify-center text-white font-black text-3xl mb-3">
             {user?.name?.[0]?.toUpperCase() ?? 'U'}
           </div>
           <div className="text-xs text-[#8B8B9E]">Usuario</div>
@@ -107,7 +107,7 @@ export default function ProfilePage() {
           <div className="space-y-0">
             {/* Name */}
             <div className="flex items-center gap-3 px-4 py-3.5 border-b border-[rgba(255,255,255,0.04)]">
-              <User size={15} className="text-[#6C63FF] flex-shrink-0" />
+              <User size={15} className="text-[#e85d04] flex-shrink-0" />
               <input
                 type="text"
                 value={name}
@@ -135,7 +135,7 @@ export default function ProfilePage() {
           transition={{ delay: 0.1 }}
           onClick={handleSave}
           disabled={saving || name === user?.name}
-          className="w-full py-3 rounded-2xl bg-gradient-to-r from-[#6C63FF] to-[#00D4AA] font-bold text-sm disabled:opacity-40 flex items-center justify-center gap-2"
+          className="w-full py-3 rounded-2xl bg-gradient-to-r from-[#e85d04] to-[#f4a100] font-bold text-sm disabled:opacity-40 flex items-center justify-center gap-2"
         >
           {saving ? (
             <div className="w-4 h-4 border-2 border-white/30 border-t-white rounded-full animate-spin" />
@@ -155,7 +155,7 @@ export default function ProfilePage() {
         >
           <div className="flex items-center justify-between px-4 py-3 border-b border-[rgba(255,255,255,0.04)]">
             <p className="text-xs font-semibold text-[#8B8B9E] uppercase tracking-wider">Métodos de pago</p>
-            <button className="flex items-center gap-1 text-xs text-[#6C63FF]">
+            <button className="flex items-center gap-1 text-xs text-[#e85d04]">
               <Plus size={13} /> Agregar
             </button>
           </div>
@@ -182,7 +182,7 @@ export default function ProfilePage() {
                     {m.is_default ? (
                       <span className="text-xs text-[#2ED573] font-medium">Principal</span>
                     ) : (
-                      <button onClick={() => handleSetDefault(m.id)} className="text-xs text-[#6C63FF]">
+                      <button onClick={() => handleSetDefault(m.id)} className="text-xs text-[#e85d04]">
                         Usar
                       </button>
                     )}

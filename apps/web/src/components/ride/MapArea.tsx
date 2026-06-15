@@ -86,7 +86,7 @@ export function MapArea() {
             }}
           />
           {/* Center dot */}
-          <div className="relative h-4 w-4 rounded-full bg-primary shadow-[0_0_20px_rgba(108,99,255,0.6)]">
+          <div className="relative h-4 w-4 rounded-full bg-primary shadow-[0_0_20px_rgba(232,93,4,0.6)]">
             <div className="absolute inset-1 rounded-full bg-white" />
           </div>
         </div>

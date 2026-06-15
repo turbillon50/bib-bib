@@ -117,7 +117,7 @@ export default function DriverDashboard() {
               <img src="/brand/driver.jpg" alt="" className="h-10 w-10 rounded-xl object-cover" />
               <div>
                 <div className="text-xs text-[#8B8B9E]">Hoy</div>
-                <div className="bg-gradient-to-r from-[#6C63FF] to-[#00D4AA] bg-clip-text font-mono text-lg font-black text-transparent">
+                <div className="bg-gradient-to-r from-[#e85d04] to-[#f4a100] bg-clip-text font-mono text-lg font-black text-transparent">
                   ${todayEarnings.toFixed(2)}
                 </div>
               </div>

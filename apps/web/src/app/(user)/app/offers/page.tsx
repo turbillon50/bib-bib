@@ -94,23 +94,23 @@ export default function OffersPage() {
         {activeRide && (
           <div className="bg-[#111118] border border-[rgba(255,255,255,0.06)] rounded-2xl px-4 py-3 space-y-1.5">
             <div className="flex items-center gap-2 text-sm">
-              <div className="w-2 h-2 rounded-full bg-[#6C63FF]" />
+              <div className="w-2 h-2 rounded-full bg-[#e85d04]" />
               <span className="text-[#8B8B9E] truncate">{activeRide.origin_address ?? 'Origen'}</span>
             </div>
             <div className="flex items-center gap-2 text-sm">
-              <MapPin size={10} className="text-[#00D4AA]" />
+              <MapPin size={10} className="text-[#f4a100]" />
               <span className="text-[#8B8B9E] truncate">{activeRide.destination_address ?? 'Destino'}</span>
             </div>
             <div className="flex items-center justify-between pt-1">
               <span className="text-xs text-[#8B8B9E]">Tu precio</span>
-              <span className="font-mono font-bold text-[#6C63FF]">${activeRide.proposed_price}</span>
+              <span className="font-mono font-bold text-[#e85d04]">${activeRide.proposed_price}</span>
             </div>
           </div>
         )}
       </div>
 
       {/* Timer */}
-      <div className="flex items-center justify-center gap-2 py-3 bg-[rgba(108,99,255,0.06)] border-b border-[rgba(255,255,255,0.04)]">
+      <div className="flex items-center justify-center gap-2 py-3 bg-[rgba(232,93,4,0.06)] border-b border-[rgba(255,255,255,0.04)]">
         <Clock size={14} className={timeLeft < 60 ? 'text-[#FF4757]' : 'text-[#8B8B9E]'} />
         <span className={`text-sm font-mono font-bold ${timeLeft < 60 ? 'text-[#FF4757]' : 'text-[#8B8B9E]'}`}>
           Busqueda expira en {mins}:{secs.toString().padStart(2, '0')}
@@ -122,7 +122,7 @@ export default function OffersPage() {
         <AnimatePresence>
           {offers.length === 0 ? (
             <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="flex flex-col items-center justify-center h-48 text-center">
-              <Loader2 size={40} className="text-[#6C63FF] animate-spin mb-4" />
+              <Loader2 size={40} className="text-[#e85d04] animate-spin mb-4" />
               <p className="text-[#8B8B9E]">Buscando choferes cerca de ti...</p>
               <p className="text-xs text-[#4A4A5A] mt-1">Las ofertas aparecerán aquí</p>
             </motion.div>

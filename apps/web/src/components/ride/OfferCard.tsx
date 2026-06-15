@@ -22,11 +22,11 @@ export function OfferCard({ offer, index, onAccept, onReject, loading }: OfferCa
       initial={{ opacity: 0, y: 20, scale: 0.97 }}
       animate={{ opacity: 1, y: 0, scale: 1 }}
       transition={{ delay: index * 0.08, type: 'spring', stiffness: 400, damping: 30 }}
-      className="bg-[#111118] border border-[rgba(255,255,255,0.08)] rounded-2xl p-4 hover:border-[rgba(108,99,255,0.3)] transition-colors"
+      className="bg-[#111118] border border-[rgba(255,255,255,0.08)] rounded-2xl p-4 hover:border-[rgba(232,93,4,0.3)] transition-colors"
     >
       <div className="flex items-center gap-3 mb-4">
         {/* Avatar */}
-        <div className="w-12 h-12 rounded-2xl bg-gradient-to-br from-[#6C63FF] to-[#00D4AA] flex items-center justify-center font-bold text-white flex-shrink-0">
+        <div className="w-12 h-12 rounded-2xl bg-gradient-to-br from-[#e85d04] to-[#f4a100] flex items-center justify-center font-bold text-white flex-shrink-0">
           {d?.avatarUrl ? (
             <img src={d.avatarUrl} alt="" className="w-full h-full rounded-2xl object-cover" />
           ) : initials}
@@ -49,7 +49,7 @@ export function OfferCard({ offer, index, onAccept, onReject, loading }: OfferCa
 
         {/* Price */}
         <div className="text-right">
-          <div className="text-xl font-black font-mono bg-gradient-to-r from-[#6C63FF] to-[#00D4AA] bg-clip-text text-transparent">
+          <div className="text-xl font-black font-mono bg-gradient-to-r from-[#e85d04] to-[#f4a100] bg-clip-text text-transparent">
             ${offer.offeredPrice.toFixed(2)}
           </div>
           {offer.offerType === 'counter' && (
@@ -88,7 +88,7 @@ export function OfferCard({ offer, index, onAccept, onReject, loading }: OfferCa
           <button
             onClick={() => onAccept(offer.id)}
             disabled={loading}
-            className="flex items-center gap-2 px-4 py-2.5 rounded-xl bg-gradient-to-r from-[#6C63FF] to-[#00D4AA] font-semibold text-sm hover:opacity-90 transition-opacity disabled:opacity-50"
+            className="flex items-center gap-2 px-4 py-2.5 rounded-xl bg-gradient-to-r from-[#e85d04] to-[#f4a100] font-semibold text-sm hover:opacity-90 transition-opacity disabled:opacity-50"
           >
             <Check size={16} /> Aceptar
           </button>
@@ -101,7 +101,7 @@ export function OfferCard({ offer, index, onAccept, onReject, loading }: OfferCa
 function getColorDot(color: string): string {
   const map: Record<string, string> = {
     blanco: '#FFFFFF', negro: '#1A1A1A', gris: '#888', rojo: '#FF4757',
-    azul: '#6C63FF', verde: '#2ED573', amarillo: '#FFD700', naranja: '#FFA502',
+    azul: '#e85d04', verde: '#2ED573', amarillo: '#FFD700', naranja: '#FFA502',
   };
   return map[color.toLowerCase()] ?? '#8B8B9E';
 }

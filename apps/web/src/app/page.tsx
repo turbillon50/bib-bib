@@ -23,14 +23,14 @@ const FEATURES = [
     title: 'Tú pones el precio',
     description:
       'Sin precios inflados. Tú propones, el repartidor acepta. Así de simple.',
-    color: '#6C63FF',
+    color: '#e85d04',
   },
   {
     icon: Shield,
     title: 'Tu seguridad primero',
     description:
       'Todos los repartidores verificados y calificados. Tu seguridad es lo más importante.',
-    color: '#00D4AA',
+    color: '#f4a100',
   },
   {
     icon: Zap,
@@ -107,7 +107,7 @@ export default function LandingPage() {
       <nav className="safe-top sticky top-0 z-50 border-b border-white/[0.06] bg-surface/85 backdrop-blur-xl">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
           <div className="flex items-center gap-2">
-            <div className="w-8 h-8 rounded-xl bg-gradient-to-br from-[#6C63FF] to-[#00D4AA] flex items-center justify-center">
+            <div className="w-8 h-8 rounded-xl bg-gradient-to-br from-[#e85d04] to-[#f4a100] flex items-center justify-center">
               <Car size={16} className="text-white" />
             </div>
             <span className="text-xl font-black tracking-tight">Bib-Bib</span>
@@ -153,9 +153,9 @@ export default function LandingPage() {
             initial={{ opacity: 0, scale: 0.8 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.5 }}
-            className="inline-flex items-center gap-2 bg-[#6C63FF]/10 border border-[#6C63FF]/30 rounded-full px-4 py-1.5 text-sm text-[#6C63FF] font-medium mb-8"
+            className="inline-flex items-center gap-2 bg-[#e85d04]/10 border border-[#e85d04]/30 rounded-full px-4 py-1.5 text-sm text-[#e85d04] font-medium mb-8"
           >
-            <span className="w-2 h-2 rounded-full bg-[#6C63FF] animate-pulse" />
+            <span className="w-2 h-2 rounded-full bg-[#e85d04] animate-pulse" />
             Name your price ride-hailing
           </motion.div>
 
@@ -229,7 +229,7 @@ export default function LandingPage() {
           >
             <div className="card glass p-5 text-left rounded-3xl text-white">
               <div className="flex items-center gap-3 mb-4">
-                <div className="w-10 h-10 rounded-full bg-gradient-to-br from-[#6C63FF] to-[#00D4AA] flex items-center justify-center text-sm font-bold">
+                <div className="w-10 h-10 rounded-full bg-gradient-to-br from-[#e85d04] to-[#f4a100] flex items-center justify-center text-sm font-bold">
                   JD
                 </div>
                 <div>
@@ -239,16 +239,16 @@ export default function LandingPage() {
                     <span className="text-white/50">4.97 · Toyota Camry</span>
                   </div>
                 </div>
-                <div className="ml-auto font-mono font-bold text-[#00D4AA] text-xl">$12</div>
+                <div className="ml-auto font-mono font-bold text-[#f4a100] text-xl">$12</div>
               </div>
               <div className="space-y-2 text-sm">
                 <div className="flex items-start gap-2">
-                  <MapPin size={14} className="text-[#6C63FF] mt-0.5 flex-shrink-0" />
+                  <MapPin size={14} className="text-[#e85d04] mt-0.5 flex-shrink-0" />
                   <span className="text-white/70">123 Main St, Downtown</span>
                 </div>
                 <div className="w-px h-4 ml-[7px] border-l border-dashed border-white/20" />
                 <div className="flex items-start gap-2">
-                  <MapPin size={14} className="text-[#00D4AA] mt-0.5 flex-shrink-0" />
+                  <MapPin size={14} className="text-[#f4a100] mt-0.5 flex-shrink-0" />
                   <span className="text-white/70">Airport Terminal B</span>
                 </div>
               </div>
@@ -290,7 +290,7 @@ export default function LandingPage() {
           variants={containerVariants}
           className="text-center mb-16"
         >
-          <motion.div variants={itemVariants} className="text-[#6C63FF] text-sm font-semibold uppercase tracking-widest mb-4">
+          <motion.div variants={itemVariants} className="text-[#e85d04] text-sm font-semibold uppercase tracking-widest mb-4">
             Why Bib-Bib
           </motion.div>
           <motion.h2 variants={itemVariants} className="text-4xl sm:text-5xl font-black mb-4">
@@ -338,7 +338,7 @@ export default function LandingPage() {
             variants={containerVariants}
             className="text-center mb-16"
           >
-            <motion.div variants={itemVariants} className="text-[#00D4AA] text-sm font-semibold uppercase tracking-widest mb-4">
+            <motion.div variants={itemVariants} className="text-[#f4a100] text-sm font-semibold uppercase tracking-widest mb-4">
               Simple process
             </motion.div>
             <motion.h2 variants={itemVariants} className="text-4xl sm:text-5xl font-black">
@@ -438,7 +438,7 @@ export default function LandingPage() {
           variants={containerVariants}
           className="text-center mb-16"
         >
-          <motion.div variants={itemVariants} className="text-[#6C63FF] text-sm font-semibold uppercase tracking-widest mb-4">
+          <motion.div variants={itemVariants} className="text-[#e85d04] text-sm font-semibold uppercase tracking-widest mb-4">
             Testimonials
           </motion.div>
           <motion.h2 variants={itemVariants} className="text-4xl sm:text-5xl font-black">
@@ -467,7 +467,7 @@ export default function LandingPage() {
               </div>
               <p className="text-white/70 text-sm leading-relaxed mb-6">"{t.text}"</p>
               <div className="flex items-center gap-3">
-                <div className="w-9 h-9 rounded-full bg-gradient-to-br from-[#6C63FF] to-[#00D4AA] flex items-center justify-center text-xs font-bold">
+                <div className="w-9 h-9 rounded-full bg-gradient-to-br from-[#e85d04] to-[#f4a100] flex items-center justify-center text-xs font-bold">
                   {t.avatar}
                 </div>
                 <div>
@@ -489,11 +489,11 @@ export default function LandingPage() {
             viewport={{ once: true }}
             className="relative overflow-hidden rounded-3xl p-12"
             style={{
-              background: 'linear-gradient(135deg, rgba(108,99,255,0.2), rgba(0,212,170,0.2))',
-              border: '1px solid rgba(108,99,255,0.3)',
+              background: 'linear-gradient(135deg, rgba(232,93,4,0.2), rgba(244,161,0,0.2))',
+              border: '1px solid rgba(232,93,4,0.3)',
             }}
           >
-            <div className="absolute inset-0 bg-gradient-to-br from-[#6C63FF]/10 to-[#00D4AA]/10" />
+            <div className="absolute inset-0 bg-gradient-to-br from-[#e85d04]/10 to-[#f4a100]/10" />
             <div className="relative z-10">
               <h2 className="text-4xl sm:text-5xl font-black mb-4">
                 Ready to ride smarter?
@@ -524,7 +524,7 @@ export default function LandingPage() {
       <footer className="border-t border-white/[0.06] py-12">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 flex flex-col md:flex-row items-center justify-between gap-4">
           <div className="flex items-center gap-2">
-            <div className="w-7 h-7 rounded-lg bg-gradient-to-br from-[#6C63FF] to-[#00D4AA] flex items-center justify-center">
+            <div className="w-7 h-7 rounded-lg bg-gradient-to-br from-[#e85d04] to-[#f4a100] flex items-center justify-center">
               <Car size={13} className="text-white" />
             </div>
             <span className="font-black text-lg">Bib-Bib</span>

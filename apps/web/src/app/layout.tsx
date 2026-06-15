@@ -9,7 +9,7 @@ export const metadata = {
 };
 
 export const viewport = {
-  width: 'device-width', initialScale: 1, maximumScale: 1, viewportFit: 'cover', themeColor: '#6C63FF',
+  width: 'device-width', initialScale: 1, maximumScale: 1, viewportFit: 'cover', themeColor: '#e85d04',
 };
 
 const pk = process.env.NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY || '';
@@ -22,7 +22,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
         <meta name="apple-mobile-web-app-capable" content="yes" />
         <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
         <meta name="apple-mobile-web-app-title" content="Bib-Bib" />
-        <meta name="theme-color" content="#6C63FF" />
+        <meta name="theme-color" content="#e85d04" />
         <link rel="manifest" href="/manifest.json" />
         <link rel="icon" href="/brand/icon-192.png" />
         <link rel="apple-touch-icon" href="/brand/apple-touch-icon.png" />

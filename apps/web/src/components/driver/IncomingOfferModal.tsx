@@ -64,15 +64,15 @@ export function IncomingOfferModal({ ride, onAccept, onCounter, onReject }: Inco
             className="w-full max-w-md bg-[#111118] border border-[rgba(255,255,255,0.1)] rounded-3xl overflow-hidden"
           >
             {/* Header */}
-            <div className="bg-gradient-to-r from-[rgba(108,99,255,0.2)] to-[rgba(0,212,170,0.1)] px-5 pt-5 pb-4">
+            <div className="bg-gradient-to-r from-[rgba(232,93,4,0.2)] to-[rgba(244,161,0,0.1)] px-5 pt-5 pb-4">
               <div className="flex items-center justify-between mb-1">
-                <span className="text-xs font-semibold text-[#6C63FF] uppercase tracking-wider">Nueva solicitud</span>
+                <span className="text-xs font-semibold text-[#e85d04] uppercase tracking-wider">Nueva solicitud</span>
                 <div className="relative w-12 h-12">
                   <svg className="w-12 h-12 -rotate-90" viewBox="0 0 80 80">
-                    <circle cx="40" cy="40" r="36" fill="none" stroke="rgba(108,99,255,0.2)" strokeWidth="6" />
+                    <circle cx="40" cy="40" r="36" fill="none" stroke="rgba(232,93,4,0.2)" strokeWidth="6" />
                     <motion.circle
                       cx="40" cy="40" r="36" fill="none"
-                      stroke={timeLeft < 10 ? '#FF4757' : '#6C63FF'}
+                      stroke={timeLeft < 10 ? '#FF4757' : '#e85d04'}
                       strokeWidth="6"
                       strokeLinecap="round"
                       strokeDasharray={circumference}
@@ -85,7 +85,7 @@ export function IncomingOfferModal({ ride, onAccept, onCounter, onReject }: Inco
                   </span>
                 </div>
               </div>
-              <div className="text-2xl font-black font-mono bg-gradient-to-r from-[#6C63FF] to-[#00D4AA] bg-clip-text text-transparent">
+              <div className="text-2xl font-black font-mono bg-gradient-to-r from-[#e85d04] to-[#f4a100] bg-clip-text text-transparent">
                 ${ride.proposedPrice.toFixed(2)} {ride.currency}
               </div>
             </div>
@@ -94,8 +94,8 @@ export function IncomingOfferModal({ ride, onAccept, onCounter, onReject }: Inco
               {/* Route */}
               <div className="space-y-2">
                 <div className="flex items-start gap-3">
-                  <div className="mt-0.5 w-5 h-5 rounded-full bg-[rgba(108,99,255,0.2)] flex items-center justify-center flex-shrink-0">
-                    <div className="w-2 h-2 rounded-full bg-[#6C63FF]" />
+                  <div className="mt-0.5 w-5 h-5 rounded-full bg-[rgba(232,93,4,0.2)] flex items-center justify-center flex-shrink-0">
+                    <div className="w-2 h-2 rounded-full bg-[#e85d04]" />
                   </div>
                   <div>
                     <div className="text-xs text-[#8B8B9E] font-medium">Recogida</div>
@@ -104,8 +104,8 @@ export function IncomingOfferModal({ ride, onAccept, onCounter, onReject }: Inco
                 </div>
                 <div className="ml-2.5 w-0.5 h-4 bg-[rgba(255,255,255,0.1)]" />
                 <div className="flex items-start gap-3">
-                  <div className="mt-0.5 w-5 h-5 rounded-full bg-[rgba(0,212,170,0.2)] flex items-center justify-center flex-shrink-0">
-                    <MapPin size={11} className="text-[#00D4AA]" />
+                  <div className="mt-0.5 w-5 h-5 rounded-full bg-[rgba(244,161,0,0.2)] flex items-center justify-center flex-shrink-0">
+                    <MapPin size={11} className="text-[#f4a100]" />
                   </div>
                   <div>
                     <div className="text-xs text-[#8B8B9E] font-medium">Destino</div>
@@ -132,7 +132,7 @@ export function IncomingOfferModal({ ride, onAccept, onCounter, onReject }: Inco
                       <input
                         type="number" value={counterPrice}
                         onChange={e => setCounterPrice(e.target.value)}
-                        className="flex-1 bg-[#1A1A24] border border-[rgba(108,99,255,0.3)] rounded-xl px-4 py-2.5 text-white font-mono text-lg font-bold focus:outline-none focus:border-[#6C63FF]"
+                        className="flex-1 bg-[#1A1A24] border border-[rgba(232,93,4,0.3)] rounded-xl px-4 py-2.5 text-white font-mono text-lg font-bold focus:outline-none focus:border-[#e85d04]"
                         placeholder="Tu precio"
                         step="0.50"
                       />
@@ -158,7 +158,7 @@ export function IncomingOfferModal({ ride, onAccept, onCounter, onReject }: Inco
                     if (showCounter) onCounter(ride.rideId, price);
                     else onAccept(ride.rideId, price);
                   }}
-                  className="flex-1 py-3 rounded-xl bg-gradient-to-r from-[#6C63FF] to-[#00D4AA] font-bold text-sm flex items-center justify-center gap-1.5 hover:opacity-90 transition-opacity"
+                  className="flex-1 py-3 rounded-xl bg-gradient-to-r from-[#e85d04] to-[#f4a100] font-bold text-sm flex items-center justify-center gap-1.5 hover:opacity-90 transition-opacity"
                 >
                   <Check size={16} />
                   {showCounter ? `Ofrecer $${counterPrice}` : 'Aceptar'}

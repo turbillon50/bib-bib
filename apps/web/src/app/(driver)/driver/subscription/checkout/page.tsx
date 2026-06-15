@@ -69,7 +69,7 @@ export default function SubscriptionCheckoutPage() {
         <motion.div
           initial={{ opacity: 0, y: 16 }}
           animate={{ opacity: 1, y: 0 }}
-          className="bg-gradient-to-br from-[rgba(108,99,255,0.2)] to-[rgba(0,212,170,0.1)] border border-[rgba(108,99,255,0.25)] rounded-2xl p-4"
+          className="bg-gradient-to-br from-[rgba(232,93,4,0.2)] to-[rgba(244,161,0,0.1)] border border-[rgba(232,93,4,0.25)] rounded-2xl p-4"
         >
           <div className="flex items-center justify-between mb-3">
             <div>
@@ -77,7 +77,7 @@ export default function SubscriptionCheckoutPage() {
               <div className="text-xs text-[#8B8B9E]">Facturado mensualmente</div>
             </div>
             <div className="text-right">
-              <div className="text-3xl font-black font-mono bg-gradient-to-r from-[#6C63FF] to-[#00D4AA] bg-clip-text text-transparent">
+              <div className="text-3xl font-black font-mono bg-gradient-to-r from-[#e85d04] to-[#f4a100] bg-clip-text text-transparent">
                 $299
               </div>
               <div className="text-xs text-[#8B8B9E]">MXN/mes</div>
@@ -174,7 +174,7 @@ export default function SubscriptionCheckoutPage() {
           <button
             type="submit"
             disabled={loading}
-            className="w-full py-4 rounded-2xl bg-gradient-to-r from-[#6C63FF] to-[#00D4AA] font-bold flex items-center justify-center gap-2 disabled:opacity-50"
+            className="w-full py-4 rounded-2xl bg-gradient-to-r from-[#e85d04] to-[#f4a100] font-bold flex items-center justify-center gap-2 disabled:opacity-50"
           >
             {loading ? (
               <div className="w-5 h-5 border-2 border-white/30 border-t-white rounded-full animate-spin" />

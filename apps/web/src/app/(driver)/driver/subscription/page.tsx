@@ -102,16 +102,16 @@ export default function SubscriptionPage() {
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            className="bg-[#111118] border border-[rgba(108,99,255,0.2)] rounded-3xl overflow-hidden"
+            className="bg-[#111118] border border-[rgba(232,93,4,0.2)] rounded-3xl overflow-hidden"
           >
-            <div className="bg-gradient-to-r from-[rgba(108,99,255,0.15)] to-[rgba(0,212,170,0.08)] px-5 py-4">
+            <div className="bg-gradient-to-r from-[rgba(232,93,4,0.15)] to-[rgba(244,161,0,0.08)] px-5 py-4">
               <div className="flex items-center justify-between">
                 <div>
                   <div className="font-bold text-lg">{plan.name}</div>
                   <div className="text-xs text-[#8B8B9E]">por {plan.interval}</div>
                 </div>
                 <div className="text-right">
-                  <div className="text-3xl font-black font-mono bg-gradient-to-r from-[#6C63FF] to-[#00D4AA] bg-clip-text text-transparent">
+                  <div className="text-3xl font-black font-mono bg-gradient-to-r from-[#e85d04] to-[#f4a100] bg-clip-text text-transparent">
                     ${plan.amount}
                   </div>
                   <div className="text-xs text-[#8B8B9E]">{plan.currency}</div>
@@ -121,8 +121,8 @@ export default function SubscriptionPage() {
             <div className="px-5 py-4 space-y-2.5">
               {plan.features.map((f) => (
                 <div key={f} className="flex items-center gap-3">
-                  <div className="w-5 h-5 rounded-full bg-[rgba(0,212,170,0.15)] flex items-center justify-center flex-shrink-0">
-                    <div className="w-2 h-2 rounded-full bg-[#00D4AA]" />
+                  <div className="w-5 h-5 rounded-full bg-[rgba(244,161,0,0.15)] flex items-center justify-center flex-shrink-0">
+                    <div className="w-2 h-2 rounded-full bg-[#f4a100]" />
                   </div>
                   <span className="text-sm">{f}</span>
                 </div>
@@ -136,7 +136,7 @@ export default function SubscriptionPage() {
           <button
             onClick={handlePortal}
             disabled={portalLoading}
-            className="w-full py-4 rounded-2xl border border-[rgba(255,255,255,0.1)] font-semibold flex items-center justify-center gap-2 hover:border-[rgba(108,99,255,0.3)] transition-colors disabled:opacity-50"
+            className="w-full py-4 rounded-2xl border border-[rgba(255,255,255,0.1)] font-semibold flex items-center justify-center gap-2 hover:border-[rgba(232,93,4,0.3)] transition-colors disabled:opacity-50"
           >
             {portalLoading ? (
               <div className="w-5 h-5 border-2 border-white/20 border-t-white rounded-full animate-spin" />
@@ -147,7 +147,7 @@ export default function SubscriptionPage() {
         ) : (
           <Link
             href="/driver/subscription/checkout"
-            className="w-full py-4 rounded-2xl bg-gradient-to-r from-[#6C63FF] to-[#00D4AA] font-bold flex items-center justify-center gap-2 hover:opacity-90 transition-opacity"
+            className="w-full py-4 rounded-2xl bg-gradient-to-r from-[#e85d04] to-[#f4a100] font-bold flex items-center justify-center gap-2 hover:opacity-90 transition-opacity"
           >
             <Zap size={18} /> Activar suscripción
           </Link>

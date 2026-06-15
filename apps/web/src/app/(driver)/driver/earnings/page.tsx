@@ -57,10 +57,10 @@ export default function EarningsPage() {
         <motion.div
           initial={{ opacity: 0, scale: 0.95 }}
           animate={{ opacity: 1, scale: 1 }}
-          className="bg-gradient-to-br from-[rgba(108,99,255,0.15)] to-[rgba(0,212,170,0.08)] border border-[rgba(108,99,255,0.2)] rounded-3xl p-6 text-center"
+          className="bg-gradient-to-br from-[rgba(232,93,4,0.15)] to-[rgba(244,161,0,0.08)] border border-[rgba(232,93,4,0.2)] rounded-3xl p-6 text-center"
         >
           <p className="text-sm text-[#8B8B9E] mb-2">Este mes</p>
-          <div className="text-5xl font-black font-mono bg-gradient-to-r from-[#6C63FF] to-[#00D4AA] bg-clip-text text-transparent">
+          <div className="text-5xl font-black font-mono bg-gradient-to-r from-[#e85d04] to-[#f4a100] bg-clip-text text-transparent">
             {earnings ? <CountUp value={earnings.month_gross} /> : '...'}
           </div>
           <div className="flex items-center justify-center gap-1 mt-2 text-[#2ED573] text-sm">
@@ -97,7 +97,7 @@ export default function EarningsPage() {
             <div className="text-sm font-semibold">Total de viajes</div>
             <div className="text-xs text-[#8B8B9E] mt-0.5">Desde que te uniste</div>
           </div>
-          <div className="text-2xl font-black font-mono text-[#00D4AA]">
+          <div className="text-2xl font-black font-mono text-[#f4a100]">
             {earnings?.total_trips ?? 0}
           </div>
         </div>
