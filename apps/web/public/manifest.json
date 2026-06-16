@@ -1,12 +1,12 @@
 {
   "name": "Bib-Bib Servicio a Domicilio",
   "short_name": "Bib-Bib",
-  "description": "Mandaditos rapidos a tu puerta. Tu pones el precio.",
+  "description": "Mandaditos rapidos a tu puerta",
   "start_url": "/",
   "display": "standalone",
   "orientation": "portrait-primary",
   "theme_color": "#e85d04",
-  "background_color": "#0f0500",
+  "background_color": "#fff8f0",
   "icons": [
     {
       "src": "/brand/icon-192.png",
@@ -17,7 +17,7 @@
       "src": "/brand/icon-512.png",
       "sizes": "512x512",
       "type": "image/png",
-      "purpose": "maskable"
+      "purpose": "any maskable"
     }
   ]
 }
