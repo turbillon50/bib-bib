@@ -5,28 +5,19 @@ import type { NextRequest } from 'next/server';
 const pk = process.env.NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY || '';
 const clerkEnabled = /^pk_(test|live)_/.test(pk) && !/placeholder|REPLACE|xxx|^pk_test_demo$/i.test(pk);
 
+// Navegacion libre — solo /admin y /checkout requieren auth
 const isPublicRoute = createRouteMatcher([
-  '/',
-  '/demo(.*)',
-  '/sign-in(.*)',
-  '/sign-up(.*)',
-  '/invite(.*)',
-  '/login', '/login/(.*)', '/register', '/register/(.*)', '/app', '/app/(.*)', '/driver', '/driver/(.*)',
-  '/login/(.*)',
-  '/register',
-  '/register/(.*)',
-  '/api/webhooks(.*)',
-  '/api/health',
-  '/api/auth(.*)',
-  '/api/branding(.*)',
-  '/api/support(.*)',
-  '/api/invitations/validate',
+  '(.*)',
+]);
+
+const isProtectedRoute = createRouteMatcher([
+  '/admin(.*)',
+  '/checkout(.*)',
 ]);
 
 const clerkHandler = clerkMiddleware((auth, req) => {
-  if (process.env.NEXT_PUBLIC_DEMO === '1' && req.cookies.get('bib-bib_demo')?.value === '1') return;
-  if (!isPublicRoute(req)) {
-    auth().protect({ unauthenticatedUrl: new URL('/login', '/login/(.*)', '/register', '/register/(.*)', '/app', '/app/(.*)', '/driver', '/driver/(.*)', req.url).toString() });
+  if (isProtectedRoute(req)) {
+    auth().protect({ unauthenticatedUrl: new URL('/login', req.url).toString() });
   }
 });
 
