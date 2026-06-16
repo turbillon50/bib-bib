@@ -3,17 +3,31 @@ import { NextResponse } from 'next/server';
 import type { NextRequest } from 'next/server';
 
 const pk = process.env.NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY || '';
-// Clerk solo se activa con una llave real; si no, la app corre en modo demo abierto.
 const clerkEnabled = /^pk_(test|live)_/.test(pk) && !/placeholder|REPLACE|xxx|^pk_test_demo$/i.test(pk);
 
 const isPublicRoute = createRouteMatcher([
-  '/', '/demo(.*)', '/sign-in(.*)', '/sign-up(.*)', '/invite(.*)',
-  '/api/webhooks(.*)', '/api/health', '/api/branding(.*)', '/api/support(.*)', '/api/invitations/validate',
+  '/',
+  '/demo(.*)',
+  '/sign-in(.*)',
+  '/sign-up(.*)',
+  '/invite(.*)',
+  '/login',
+  '/login/(.*)',
+  '/register',
+  '/register/(.*)',
+  '/api/webhooks(.*)',
+  '/api/health',
+  '/api/auth(.*)',
+  '/api/branding(.*)',
+  '/api/support(.*)',
+  '/api/invitations/validate',
 ]);
 
 const clerkHandler = clerkMiddleware((auth, req) => {
   if (process.env.NEXT_PUBLIC_DEMO === '1' && req.cookies.get('bib-bib_demo')?.value === '1') return;
-  if (!isPublicRoute(req)) auth().protect({ unauthenticatedUrl: new URL('/sign-in', req.url).toString() });
+  if (!isPublicRoute(req)) {
+    auth().protect({ unauthenticatedUrl: new URL('/login', req.url).toString() });
+  }
 });
 
 export default function middleware(req: NextRequest, ev: any) {
