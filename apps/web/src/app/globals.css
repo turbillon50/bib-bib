@@ -213,3 +213,17 @@ input[type='range']::-webkit-slider-thumb:hover { transform: scale(1.2); }
 .loading-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--accent); animation: loadingDot 1.4s ease-in-out infinite; }
 .loading-dot:nth-child(2) { animation-delay: 0.16s; }
 .loading-dot:nth-child(3) { animation-delay: 0.32s; }
+
+/* ── Vulcano Design Tokens ─────────────────────────────── */
+:root {
+  --sp-1: 8px;
+  --sp-2: 16px;
+  --sp-3: 24px;
+  --sp-4: 32px;
+  --r-sm: 8px;
+  --r-md: 16px;
+  --r-lg: 24px;
+  --anim-fast: 150ms;
+  --anim-normal: 250ms;
+  --nav-height: 64px;
+}
