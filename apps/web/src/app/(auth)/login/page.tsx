@@ -48,7 +48,7 @@ export default function LoginPage() {
   };
 
   return (
-    <div className="min-h-screen bg-[#0A0A0F] flex items-center justify-center relative overflow-hidden">
+    <div className="min-h-screen bg-[#0f0500] flex items-center justify-center relative overflow-hidden">
       {/* Animated gradient orbs */}
       <motion.div
         animate={{
